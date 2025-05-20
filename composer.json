@@ -1,0 +1,23 @@
+{
+    "name": "fcet-bichi/staff-cooperative",
+    "description": "FCET Bichi Staff Multipurpose Cooperative Society Portal",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+        "phpmailer/phpmailer": "^6.8",
+        "tecnickcom/tcpdf": "^6.6",
+        "phpoffice/phpspreadsheet": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "FCET Bichi",
+            "email": "coops@fcetbichi.edu.ng"
+        }
+    ],
+    "minimum-stability": "stable"
+}

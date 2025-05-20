@@ -1,0 +1,26 @@
+# Enable rewrite engine
+Options -MultiViews
+RewriteEngine On
+
+# Set the rewrite base - important for subdirectory installation
+RewriteBase /Coops_Bichi/public
+
+# Uncomment for debugging - will show you the URL being processed
+# RewriteRule ^ - [E=REDIRECT_URL:%{REQUEST_URI},L]
+
+# Ensure Authorization header is passed
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1 
+
+# Redirect to remove trailing slashes if not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+# Debugging rule - uncomment to troubleshoot
+# RewriteRule .* - [E=REWRITE_BASE:/coops_bichi/public,L]
+
+# Handle front controller - pass all requests not pointing to actual files
+# or directories to index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L] 

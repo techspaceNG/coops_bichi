@@ -28,49 +28,49 @@
     <div class="row g-3 mb-4">
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden">
-                <div class="card-body p-4 text-center">
-                    <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary d-inline-block mb-3">
-                        <i class="fas fa-shopping-basket fa-lg"></i>
+                <div class="card-body p-3 text-center">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; margin: 0 auto; flex-shrink: 0;">
+                        <i class="fas fa-shopping-basket small"></i>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Aggregate Inventory</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['total_amount'], 2) ?></h3>
-                    <div class="text-primary small mt-2 fw-semibold"><?= $stats['total'] ?> Entities</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Aggregate Inventory</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['total_amount'], 2) ?></h5>
+                    <div class="text-primary mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['total'] ?> Entities</div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden border-top border-4 border-warning">
-                <div class="card-body p-4 text-center">
-                    <div class="bg-warning bg-opacity-10 p-2 rounded-3 text-warning d-inline-block mb-3">
-                        <i class="fas fa-hourglass-half fa-lg"></i>
+                <div class="card-body p-3 text-center">
+                    <div class="bg-warning bg-opacity-10 p-2 rounded-3 text-warning d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; margin: 0 auto; flex-shrink: 0;">
+                        <i class="fas fa-hourglass-half small"></i>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">In Queue</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['pending_amount'], 2) ?></h3>
-                    <div class="text-warning small mt-2 fw-semibold"><?= $stats['pending'] ?> Awaiting Review</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">In Queue</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['pending_amount'], 2) ?></h5>
+                    <div class="text-warning mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['pending'] ?> Awaiting Review</div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden border-top border-4 border-success">
-                <div class="card-body p-4 text-center">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success d-inline-block mb-3">
-                        <i class="fas fa-truck-loading fa-lg"></i>
+                <div class="card-body p-3 text-center">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; margin: 0 auto; flex-shrink: 0;">
+                        <i class="fas fa-truck-loading small"></i>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Approved Assets</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['approved_amount'], 2) ?></h3>
-                    <div class="text-success small mt-2 fw-semibold"><?= $stats['approved'] ?> Finalized</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Approved Assets</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['approved_amount'], 2) ?></h5>
+                    <div class="text-success mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['approved'] ?> Finalized</div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden border-top border-4 border-danger">
-                <div class="card-body p-4 text-center">
-                    <div class="bg-danger bg-opacity-10 p-2 rounded-3 text-danger d-inline-block mb-3">
-                        <i class="fas fa-ban fa-lg"></i>
+                <div class="card-body p-3 text-center">
+                    <div class="bg-danger bg-opacity-10 p-2 rounded-3 text-danger d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; margin: 0 auto; flex-shrink: 0;">
+                        <i class="fas fa-ban small"></i>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Declined Volume</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['declined_amount'], 2) ?></h3>
-                    <div class="text-danger small mt-2 fw-semibold"><?= $stats['declined'] ?> Blocked</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Declined Volume</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['declined_amount'], 2) ?></h5>
+                    <div class="text-danger mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['declined'] ?> Blocked</div>
                 </div>
             </div>
         </div>

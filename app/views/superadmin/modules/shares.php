@@ -36,54 +36,54 @@
     <div class="row g-3 mb-4">
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 position-relative overflow-hidden">
-                <div class="card-body p-4">
-                    <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary d-inline-block mb-3">
-                        <i class="fas fa-chart-line fa-lg"></i>
+                <div class="card-body p-3">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-chart-line small"></i>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Market Capitalization</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['total_value'] ?? 0, 2) ?></h3>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Market Capitalization</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['total_value'] ?? 0, 2) ?></h5>
                 </div>
-                <div class="position-absolute opacity-10" style="right: -10px; bottom: -20px;">
-                    <i class="fas fa-chart-line fa-6x"></i>
+                <div class="position-absolute opacity-10" style="right: -5px; bottom: -10px;">
+                    <i class="fas fa-chart-line fa-4x"></i>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 position-relative overflow-hidden">
-                <div class="card-body p-4">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success d-inline-block mb-3">
-                        <i class="fas fa-layer-group fa-lg"></i>
+                <div class="card-body p-3">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-layer-group small"></i>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Issued Equity Units</div>
-                    <h3 class="fw-bold mb-0"><?= number_format($stats['total_shares'] ?? 0) ?></h3>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Issued Equity Units</div>
+                    <h5 class="fw-bold mb-0"><?= number_format($stats['total_shares'] ?? 0) ?></h5>
                 </div>
-                <div class="position-absolute opacity-10" style="right: -10px; bottom: -20px;">
-                    <i class="fas fa-layer-group fa-6x text-success"></i>
+                <div class="position-absolute opacity-10" style="right: -5px; bottom: -10px;">
+                    <i class="fas fa-layer-group fa-4x text-success"></i>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 position-relative overflow-hidden">
-                <div class="card-body p-4">
-                    <div class="bg-info bg-opacity-10 p-2 rounded-3 text-info d-inline-block mb-3">
-                        <i class="fas fa-users-cog fa-lg"></i>
+                <div class="card-body p-3">
+                    <div class="bg-info bg-opacity-10 p-2 rounded-3 text-info d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-users-cog small"></i>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Shareholding Base</div>
-                    <h3 class="fw-bold mb-0"><?= number_format($stats['total_members'] ?? 0) ?></h3>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Shareholding Base</div>
+                    <h5 class="fw-bold mb-0"><?= number_format($stats['total_members'] ?? 0) ?></h5>
                 </div>
-                <div class="position-absolute opacity-10" style="right: -10px; bottom: -20px;">
-                    <i class="fas fa-users-cog fa-6x text-info"></i>
+                <div class="position-absolute opacity-10" style="right: -5px; bottom: -10px;">
+                    <i class="fas fa-users-cog fa-4x text-info"></i>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm bg-dark h-100 position-relative overflow-hidden">
-                <div class="card-body p-4 text-white">
-                    <div class="bg-white bg-opacity-10 p-2 rounded-3 text-white d-inline-block mb-3">
-                        <i class="fas fa-file-invoice-dollar fa-lg"></i>
+                <div class="card-body p-3 text-white">
+                    <div class="bg-white bg-opacity-10 p-2 rounded-3 text-white d-inline-block mb-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-file-invoice-dollar small"></i>
                     </div>
-                    <div class="text-white-50 small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Average Equity/Member</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format(($stats['total_value'] ?? 0) / max(1, $stats['total_members'] ?? 1), 2) ?></h3>
+                    <div class="text-white-50 small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Avg Equity/Member</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format(($stats['total_value'] ?? 0) / max(1, $stats['total_members'] ?? 1), 2) ?></h5>
                 </div>
             </div>
         </div>

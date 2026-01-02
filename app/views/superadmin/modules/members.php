@@ -31,57 +31,57 @@
     <div class="row g-3 mb-4">
         <div class="col-xl-3 col-md-6">
             <div class="card border-0 shadow-sm overflow-hidden h-100">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="rounded-3 bg-primary bg-opacity-10 text-primary p-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-users-cog fa-lg"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="rounded-3 bg-primary bg-opacity-10 text-primary" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-users-cog"></i>
                         </div>
-                        <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill fw-normal">Total</span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill fw-normal" style="font-size: 0.65rem;">Total</span>
                     </div>
-                    <h3 class="fw-bold mb-1"><?= isset($stats['total']) ? number_format($stats['total']) : '0' ?></h3>
-                    <p class="text-muted small mb-0 font-weight-medium">Registered Society Members</p>
+                    <h5 class="fw-bold mb-1"><?= isset($stats['total']) ? number_format($stats['total']) : '0' ?></h5>
+                    <p class="text-muted small mb-0 font-weight-medium" style="font-size: 0.7rem;">Society Members</p>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card border-0 shadow-sm overflow-hidden h-100">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="rounded-3 bg-success bg-opacity-10 text-success p-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-user-check fa-lg"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="rounded-3 bg-success bg-opacity-10 text-success" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-user-check"></i>
                         </div>
-                        <span class="badge bg-success bg-opacity-10 text-success rounded-pill fw-normal">+<?= isset($stats['active']) ? number_format($stats['active']) : '0' ?></span>
+                        <span class="badge bg-success bg-opacity-10 text-success rounded-pill fw-normal" style="font-size: 0.65rem;">+<?= isset($stats['active']) ? number_format($stats['active']) : '0' ?></span>
                     </div>
-                    <h3 class="fw-bold mb-1"><?= isset($stats['active']) ? number_format($stats['active']) : '0' ?></h3>
-                    <p class="text-muted small mb-0 font-weight-medium">Active & Operational</p>
+                    <h5 class="fw-bold mb-1"><?= isset($stats['active']) ? number_format($stats['active']) : '0' ?></h5>
+                    <p class="text-muted small mb-0 font-weight-medium" style="font-size: 0.7rem;">Active & Operational</p>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card border-0 shadow-sm overflow-hidden h-100">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="rounded-3 bg-info bg-opacity-10 text-info p-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-sitemap fa-lg"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="rounded-3 bg-info bg-opacity-10 text-info" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-sitemap"></i>
                         </div>
-                        <span class="badge bg-info bg-opacity-10 text-info rounded-pill fw-normal">Units</span>
+                        <span class="badge bg-info bg-opacity-10 text-info rounded-pill fw-normal" style="font-size: 0.65rem;">Units</span>
                     </div>
-                    <h3 class="fw-bold mb-1"><?= isset($stats['departments']) ? number_format($stats['departments']) : '0' ?></h3>
-                    <p class="text-muted small mb-0 font-weight-medium">Registered Departments</p>
+                    <h5 class="fw-bold mb-1"><?= isset($stats['departments']) ? number_format($stats['departments']) : '0' ?></h5>
+                    <p class="text-muted small mb-0 font-weight-medium" style="font-size: 0.7rem;">Registered Departments</p>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card border-0 shadow-sm overflow-hidden h-100">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="rounded-3 bg-warning bg-opacity-10 text-warning p-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-user-plus fa-lg"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="rounded-3 bg-warning bg-opacity-10 text-warning" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-user-plus"></i>
                         </div>
-                        <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill fw-normal">Growth</span>
+                        <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill fw-normal" style="font-size: 0.65rem;">Growth</span>
                     </div>
-                    <h3 class="fw-bold mb-1"><?= isset($stats['new_this_month']) ? number_format($stats['new_this_month']) : '0' ?></h3>
-                    <p class="text-muted small mb-0 font-weight-medium">New Onboarded This Month</p>
+                    <h5 class="fw-bold mb-1"><?= isset($stats['new_this_month']) ? number_format($stats['new_this_month']) : '0' ?></h5>
+                    <p class="text-muted small mb-0 font-weight-medium" style="font-size: 0.7rem;">New This Month</p>
                 </div>
             </div>
         </div>

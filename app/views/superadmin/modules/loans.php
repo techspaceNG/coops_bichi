@@ -28,61 +28,61 @@
     <div class="row g-3 mb-4">
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary">
-                            <i class="fas fa-money-bill-wave"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-money-bill-wave small"></i>
                         </div>
-                        <span class="text-muted small fw-bold">Total Exposure</span>
+                        <span class="text-muted fw-bold" style="font-size: 0.7rem;">Total Exposure</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Aggregate Volume</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['total_amount'] ?? 0, 2) ?></h3>
-                    <div class="text-primary small mt-2 fw-semibold"><?= $stats['total'] ?> Active Contracts</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Aggregate Volume</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['total_amount'] ?? 0, 2) ?></h5>
+                    <div class="text-primary mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['total'] ?> Active Contracts</div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden border-start border-4 border-warning">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-warning bg-opacity-10 p-2 rounded-3 text-warning">
-                            <i class="fas fa-clock"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-warning bg-opacity-10 p-2 rounded-3 text-warning" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-clock small"></i>
                         </div>
-                        <span class="text-warning small fw-bold">Action Required</span>
+                        <span class="text-warning fw-bold" style="font-size: 0.7rem;">Action Required</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Pending Approval</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['pending_amount'] ?? 0, 2) ?></h3>
-                    <div class="text-warning small mt-2 fw-semibold"><?= $stats['pending'] ?? 0 ?> Applications</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Pending Approval</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['pending_amount'] ?? 0, 2) ?></h5>
+                    <div class="text-warning mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['pending'] ?? 0 ?> Applications</div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden border-start border-4 border-success">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success">
-                            <i class="fas fa-check-circle"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-check-circle small"></i>
                         </div>
-                        <span class="text-success small fw-bold">Disbursed</span>
+                        <span class="text-success fw-bold" style="font-size: 0.7rem;">Disbursed</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Approved Capital</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['approved_amount'] ?? 0, 2) ?></h3>
-                    <div class="text-success small mt-2 fw-semibold"><?= $stats['approved'] ?? 0 ?> Active Loans</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Approved Capital</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['approved_amount'] ?? 0, 2) ?></h5>
+                    <div class="text-success mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['approved'] ?? 0 ?> Active Loans</div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden border-start border-4 border-danger">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-danger bg-opacity-10 p-2 rounded-3 text-danger">
-                            <i class="fas fa-times-circle"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-danger bg-opacity-10 p-2 rounded-3 text-danger" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-times-circle small"></i>
                         </div>
-                        <span class="text-danger small fw-bold">Rejected</span>
+                        <span class="text-danger fw-bold" style="font-size: 0.7rem;">Rejected</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Declined Volume</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['rejected_amount'] ?? 0, 2) ?></h3>
-                    <div class="text-danger small mt-2 fw-semibold"><?= $stats['rejected'] ?? 0 ?> Applications</div>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Declined Volume</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['rejected_amount'] ?? 0, 2) ?></h5>
+                    <div class="text-danger mt-1 fw-semibold" style="font-size: 0.7rem;"><?= $stats['rejected'] ?? 0 ?> Applications</div>
                 </div>
             </div>
         </div>

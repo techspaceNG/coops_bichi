@@ -188,7 +188,90 @@
             <?php endif; ?>
         </div>
         
-        <!-- Recent Transactions -->
+        <!-- Applications Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+            <!-- Recent Loan Applications -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Recent Loan Applications</h2>
+                    <a href="<?= url('/member/loans/applications') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                        View All <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <?php if (empty($loanApplications)): ?>
+                    <div class="text-center py-4">
+                        <p class="text-gray-500 text-sm">No recent loan applications.</p>
+                        <a href="<?= url('/member/loans/apply') ?>" class="inline-block mt-2 text-blue-600 hover:text-blue-800 text-sm font-medium">Apply Now</a>
+                    </div>
+                <?php else: ?>
+                    <div class="space-y-4">
+                        <?php foreach (array_slice($loanApplications, 0, 3) as $app): ?>
+                            <div class="flex items-center justify-between p-3 border rounded-md">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">₦<?= number_format($app['loan_amount'], 2) ?></p>
+                                    <p class="text-xs text-gray-500"><?= date('M d, Y', strtotime($app['application_date'])) ?></p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full 
+                                        <?php
+                                        switch ($app['status']) {
+                                            case 'approved': echo 'bg-green-100 text-green-800'; break;
+                                            case 'pending': echo 'bg-yellow-100 text-yellow-800'; break;
+                                            case 'rejected': echo 'bg-red-100 text-red-800'; break;
+                                            default: echo 'bg-gray-100 text-gray-800';
+                                        }
+                                        ?>">
+                                        <?= ucfirst(htmlspecialchars($app['status'])) ?>
+                                    </span>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <!-- Recent Household Applications -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Recent Household Applications</h2>
+                    <a href="<?= url('/member/household/applications') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                        View All <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <?php if (empty($householdApplications)): ?>
+                    <div class="text-center py-4">
+                        <p class="text-gray-500 text-sm">No recent household applications.</p>
+                        <a href="<?= url('/member/household/order') ?>" class="inline-block mt-2 text-blue-600 hover:text-blue-800 text-sm font-medium">Apply Now</a>
+                    </div>
+                <?php else: ?>
+                    <div class="space-y-4">
+                        <?php foreach (array_slice($householdApplications, 0, 3) as $app): ?>
+                            <div class="flex items-center justify-between p-3 border rounded-md">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800"><?= htmlspecialchars($app['product_name'] ?? 'Household Item') ?></p>
+                                    <p class="text-xs text-gray-500">₦<?= number_format($app['purchase_amount'], 2) ?> • <?= date('M d, Y', strtotime($app['application_date'])) ?></p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full 
+                                        <?php
+                                        switch ($app['status']) {
+                                            case 'approved': echo 'bg-green-100 text-green-800'; break;
+                                            case 'pending': echo 'bg-yellow-100 text-yellow-800'; break;
+                                            case 'rejected': echo 'bg-red-100 text-red-800'; break;
+                                            default: echo 'bg-gray-100 text-gray-800';
+                                        }
+                                        ?>">
+                                        <?= ucfirst(htmlspecialchars($app['status'])) ?>
+                                    </span>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
         <div class="bg-white rounded-lg shadow-md p-6">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-800">Recent Transactions</h2>

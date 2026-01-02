@@ -24,12 +24,12 @@ $page_title = 'Manage Administrators';
         <div class="col-md-3">
             <div class="card border-0 shadow-sm p-3">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-2">
-                        <i class="fas fa-users-cog fa-lg"></i>
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; flex-shrink: 0;">
+                        <i class="fas fa-users-cog"></i>
                     </div>
                     <div>
-                        <div class="text-muted small">Total Admins</div>
-                        <div class="h5 fw-bold mb-0"><?= count($admins) ?></div>
+                        <div class="text-muted small fw-bold text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Total Admins</div>
+                        <h5 class="fw-bold mb-0"><?= count($admins) ?></h5>
                     </div>
                 </div>
             </div>

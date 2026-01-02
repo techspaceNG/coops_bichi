@@ -20,14 +20,14 @@ $current_page = 'dashboard';
     <!-- Admin Stats Card -->
     <div class="col-xl-3 col-md-6">
         <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; background-color: var(--color-primary-100); color: var(--color-primary-600);">
-                        <i class="fas fa-user-shield fa-lg"></i>
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: var(--color-primary-100); color: var(--color-primary-600); flex-shrink: 0;">
+                        <i class="fas fa-user-shield"></i>
                     </div>
                     <div>
-                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px;">Admins</p>
-                        <h3 class="mb-0 fw-bold text-dark"><?php echo $adminStats['total_admins']; ?></h3>
+                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Admins</p>
+                        <h5 class="mb-0 fw-bold text-dark"><?php echo $adminStats['total_admins']; ?></h5>
                     </div>
                 </div>
                 <div class="mt-3 pt-3 border-top border-light">
@@ -42,14 +42,14 @@ $current_page = 'dashboard';
     <!-- Total Members Card -->
     <div class="col-xl-3 col-md-6">
         <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; background-color: #d1e7dd; color: #0f5132;">
-                        <i class="fas fa-users fa-lg"></i>
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: #d1e7dd; color: #0f5132; flex-shrink: 0;">
+                        <i class="fas fa-users"></i>
                     </div>
                     <div>
-                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px;">Members</p>
-                        <h3 class="mb-0 fw-bold text-dark"><?php echo (int)($memberStats['total_members'] ?? 0); ?></h3>
+                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Members</p>
+                        <h5 class="mb-0 fw-bold text-dark"><?php echo (int)($memberStats['total_members'] ?? 0); ?></h5>
                     </div>
                 </div>
                 <div class="mt-3 pt-3 border-top border-light">
@@ -64,14 +64,14 @@ $current_page = 'dashboard';
     <!-- Total Savings Card -->
     <div class="col-xl-3 col-md-6">
         <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; background-color: #cff4fc; color: #055160;">
-                        <i class="fas fa-wallet fa-lg"></i>
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: #cff4fc; color: #055160; flex-shrink: 0;">
+                        <i class="fas fa-wallet"></i>
                     </div>
                     <div>
-                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px;">Savings</p>
-                        <h3 class="mb-0 fw-bold text-dark">₦<?php echo number_format((float)($financialStats['total_savings'] ?? 0), 2); ?></h3>
+                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Savings</p>
+                        <h5 class="mb-0 fw-bold text-dark">₦<?php echo number_format((float)($financialStats['total_savings'] ?? 0), 2); ?></h5>
                     </div>
                 </div>
                 <div class="mt-3 pt-3 border-top border-light">
@@ -86,14 +86,14 @@ $current_page = 'dashboard';
     <!-- Active Loans Card -->
     <div class="col-xl-3 col-md-6">
         <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <div class="rounded-circle p-3 d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; background-color: #fff3cd; color: #664d03;">
-                        <i class="fas fa-money-bill-wave fa-lg"></i>
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: #fff3cd; color: #664d03; flex-shrink: 0;">
+                        <i class="fas fa-money-bill-wave"></i>
                     </div>
                     <div>
-                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px;">Active Loans</p>
-                        <h3 class="mb-0 fw-bold text-dark"><?php echo (int)($financialStats['active_loans'] ?? 0); ?></h3>
+                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Active Loans</p>
+                        <h5 class="mb-0 fw-bold text-dark"><?php echo (int)($financialStats['active_loans'] ?? 0); ?></h5>
                     </div>
                 </div>
                 <div class="mt-3 pt-3 border-top border-light">

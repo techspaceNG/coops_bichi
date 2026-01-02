@@ -57,6 +57,10 @@ function formatNotificationLink($link, $publicUrl, $id) {
                     
                     <?php if (\App\Helpers\Auth::isMemberLoggedIn()): ?>
                         <a href="<?= $publicUrl ?>/member/dashboard" class="text-gray-600 hover:text-primary-600">Dashboard</a>
+                        <a href="<?= $publicUrl ?>/member/savings" class="text-gray-600 hover:text-primary-600">Savings</a>
+                        <a href="<?= $publicUrl ?>/member/loans" class="text-gray-600 hover:text-primary-600">Loans</a>
+                        <a href="<?= $publicUrl ?>/member/household" class="text-gray-600 hover:text-primary-600">Household</a>
+                        <a href="<?= $publicUrl ?>/member/shares" class="text-gray-600 hover:text-primary-600">Shares</a>
                         
                         <!-- Notification Bell -->
                         <div class="relative group">
@@ -210,6 +214,10 @@ function formatNotificationLink($link, $publicUrl, $id) {
                 
                 <?php if (\App\Helpers\Auth::isMemberLoggedIn()): ?>
                     <a href="<?= $publicUrl ?>/member/dashboard" class="block py-2 text-gray-600 hover:text-primary-600">Dashboard</a>
+                    <a href="<?= $publicUrl ?>/member/savings" class="block py-2 text-gray-600 hover:text-primary-600">Savings</a>
+                    <a href="<?= $publicUrl ?>/member/loans" class="block py-2 text-gray-600 hover:text-primary-600">Loans</a>
+                    <a href="<?= $publicUrl ?>/member/household" class="block py-2 text-gray-600 hover:text-primary-600">Household</a>
+                    <a href="<?= $publicUrl ?>/member/shares" class="block py-2 text-gray-600 hover:text-primary-600">Shares</a>
                     
                     <!-- Mobile Notifications Link -->
                     <a href="<?= $publicUrl ?>/member/notifications" class="block py-2 text-gray-600 hover:text-primary-600">

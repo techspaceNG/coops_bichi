@@ -32,57 +32,57 @@
     <div class="row g-3 mb-4">
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden position-relative">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-primary bg-opacity-10 p-2 rounded-3">
-                            <i class="fas fa-piggy-bank text-primary"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-primary bg-opacity-10 p-2 rounded-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-piggy-bank text-primary small"></i>
                         </div>
-                        <span class="text-success small fw-bold"><i class="fas fa-arrow-up me-1"></i>4.2%</span>
+                        <span class="text-success fw-bold" style="font-size: 0.7rem;"><i class="fas fa-arrow-up me-1"></i>4.2%</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Total Assets Under Management</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['total_savings'], 2) ?></h3>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Total Assets</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['total_savings'], 2) ?></h5>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden position-relative">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-success bg-opacity-10 p-2 rounded-3">
-                            <i class="fas fa-hand-holding-usd text-success"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-success bg-opacity-10 p-2 rounded-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-hand-holding-usd text-success small"></i>
                         </div>
-                        <span class="text-muted small fw-bold opacity-50">Monthly</span>
+                        <span class="text-muted fw-bold opacity-50" style="font-size: 0.7rem;">Monthly</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Scheduled Monthly Volume</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['monthly_deductions'], 2) ?></h3>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Scheduled Volume</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['monthly_deductions'], 2) ?></h5>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden position-relative">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-info bg-opacity-10 p-2 rounded-3">
-                            <i class="fas fa-users text-info"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-info bg-opacity-10 p-2 rounded-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-users text-info small"></i>
                         </div>
-                        <span class="text-muted small fw-bold opacity-50">Active Users</span>
+                        <span class="text-muted fw-bold opacity-50" style="font-size: 0.7rem;">Active</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Contributing Member Base</div>
-                    <h3 class="fw-bold mb-0"><?= number_format($stats['total_members']) ?></h3>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Member Base</div>
+                    <h5 class="fw-bold mb-0"><?= number_format($stats['total_members']) ?></h5>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6">
             <div class="card border-0 shadow-sm h-100 overflow-hidden position-relative">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="bg-warning bg-opacity-10 p-2 rounded-3">
-                            <i class="fas fa-chart-pie text-warning"></i>
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="bg-warning bg-opacity-10 p-2 rounded-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-chart-pie text-warning small"></i>
                         </div>
-                        <span class="text-muted small fw-bold opacity-50">Efficiency</span>
+                        <span class="text-muted fw-bold opacity-50" style="font-size: 0.7rem;">Avg</span>
                     </div>
-                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px;">Average Capitalization</div>
-                    <h3 class="fw-bold mb-0">₦<?= number_format($stats['average_savings'], 2) ?></h3>
+                    <div class="text-muted small fw-bold text-uppercase mb-1" style="letter-spacing: 0.5px; font-size: 0.65rem;">Average Cap.</div>
+                    <h5 class="fw-bold mb-0">₦<?= number_format($stats['average_savings'], 2) ?></h5>
                 </div>
             </div>
         </div>

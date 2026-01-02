@@ -34,7 +34,7 @@
                 <div class="bg-primary py-5 position-relative">
                     <div class="position-absolute w-100 h-100 top-0 start-0 opacity-10" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
                 </div>
-                <div class="card-body p-4 text-center mt-n5 position-relative">
+                <div class="card-body p-3 text-center mt-n5 position-relative">
                     <div class="position-relative d-inline-block mb-3">
                         <div class="rounded-circle bg-white shadow-sm p-1">
                             <div class="rounded-circle bg-light d-flex align-items-center justify-content-center border" style="width: 120px; height: 120px;">
@@ -84,29 +84,29 @@
                 <div class="card-header bg-white border-bottom py-3">
                     <h6 class="fw-bold mb-0 small text-uppercase text-muted">Banking & Settlement</h6>
                 </div>
-                <div class="card-body p-4">
+                <div class="card-body p-3">
                     <div class="d-grid gap-3">
-                        <div class="p-3 bg-light rounded-3">
-                            <div class="small text-muted mb-1">Financial Institution</div>
-                            <div class="fw-bold"><?= !empty($member['bank_name']) ? htmlspecialchars($member['bank_name']) : '---' ?></div>
+                        <div class="p-2 bg-light rounded-3">
+                            <div class="small text-muted mb-0" style="font-size: 0.65rem;">Financial Institution</div>
+                            <div class="fw-bold small"><?= !empty($member['bank_name']) ? htmlspecialchars($member['bank_name']) : '---' ?></div>
                         </div>
                         <div class="row g-3">
                             <div class="col-6">
-                                <div class="p-3 bg-light rounded-3">
-                                    <div class="small text-muted mb-1">Account No.</div>
-                                    <div class="fw-bold"><?= !empty($member['account_number']) ? htmlspecialchars($member['account_number']) : '---' ?></div>
+                                <div class="p-2 bg-light rounded-3">
+                                    <div class="small text-muted mb-0" style="font-size: 0.65rem;">Account No.</div>
+                                    <div class="fw-bold small"><?= !empty($member['account_number']) ? htmlspecialchars($member['account_number']) : '---' ?></div>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="p-3 bg-light rounded-3">
-                                    <div class="small text-muted mb-1">BVN Ref.</div>
-                                    <div class="fw-bold"><?= !empty($member['bvn']) ? htmlspecialchars($member['bvn']) : '---' ?></div>
+                                <div class="p-2 bg-light rounded-3">
+                                    <div class="small text-muted mb-0" style="font-size: 0.65rem;">BVN Ref.</div>
+                                    <div class="fw-bold small"><?= !empty($member['bvn']) ? htmlspecialchars($member['bvn']) : '---' ?></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-3 bg-light rounded-3">
-                            <div class="small text-muted mb-1">Beneficiary Name</div>
-                            <div class="fw-bold"><?= !empty($member['account_name']) ? htmlspecialchars($member['account_name']) : '---' ?></div>
+                        <div class="p-2 bg-light rounded-3">
+                            <div class="small text-muted mb-0" style="font-size: 0.65rem;">Beneficiary Name</div>
+                            <div class="fw-bold small"><?= !empty($member['account_name']) ? htmlspecialchars($member['account_name']) : '---' ?></div>
                         </div>
                     </div>
                 </div>

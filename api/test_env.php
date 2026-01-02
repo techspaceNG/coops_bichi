@@ -9,6 +9,10 @@ for ($i = 0; $i < ob_get_level(); $i++) { ob_end_flush(); }
 ob_implicit_flush(1);
 
 echo "<h1>Vercel Extended Diagnostic</h1>";
+// Force buffer flush with padding
+echo str_pad('', 4096, ' ');
+flush();
+
 echo "Step 1: PHP Script Started... <br>";
 flush();
 
@@ -33,7 +37,7 @@ $host = getenv('DB_HOST');
 $port = 3306;
 
 $start = microtime(true);
-$fp = @fsockopen($host, $port, $errno, $errstr, 5);
+$fp = @fsockopen($host, $port, $errno, $errstr, 2);
 $end = microtime(true);
 
 if ($fp) {

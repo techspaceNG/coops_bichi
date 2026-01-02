@@ -4,12 +4,19 @@
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.1"
+    },
+    "public/test_env.php": {
+      "runtime": "vercel-php@0.7.1"
     }
   },
   "routes": [
     {
       "src": "/(assets|css|js|images|img|uploads)/(.*)",
       "dest": "/public/$1/$2"
+    },
+    {
+      "src": "/test_env.php",
+      "dest": "/public/test_env.php"
     },
     {
       "src": "/(.*)",

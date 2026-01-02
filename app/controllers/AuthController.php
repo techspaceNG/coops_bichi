@@ -320,7 +320,8 @@ final class AuthController extends Controller
         // Display admin login form
         $this->render('auth/admin_login', [
             'pageTitle' => 'Admin Login',
-            'baseUrl' => $baseUrl
+            'baseUrl' => $baseUrl,
+            'publicUrl' => $publicUrl
         ]);
     }
     

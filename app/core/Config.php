@@ -16,7 +16,8 @@ final class Config
     public static function getBaseUrl(): string
     {
         // Check if we are in a serverless environment (Vercel)
-        if (defined('SERVERLESS_ENVIRONMENT') && SERVERLESS_ENVIRONMENT) {
+        // Check both the constant and the environment variable
+        if ((defined('SERVERLESS_ENVIRONMENT') && SERVERLESS_ENVIRONMENT) || getenv('APP_ENV') === 'production') {
             return '';
         }
 
@@ -35,6 +36,12 @@ final class Config
                 }
                 return '/Coops_Bichi';
             }
+            
+            // Ensure baseUrl starts with /
+            if (!empty($baseUrl) && $baseUrl[0] !== '/') {
+                $baseUrl = '/' . $baseUrl;
+            }
+            
             return $baseUrl;
         }
 
@@ -56,7 +63,6 @@ final class Config
         }
         
         // If baseUrl is empty, it depends on the directory structure.
-        // In this project, if we're at root, we usually want to point to the current root.
         return $baseUrl !== '' ? $baseUrl . '/public' : '';
     }
 

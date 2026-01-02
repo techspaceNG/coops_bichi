@@ -11,6 +11,7 @@ final class Environment
 {
     private static bool $loaded = false;
     private static array $variables = [];
+
     
     /**
      * Load environment variables from .env file

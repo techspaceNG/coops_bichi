@@ -324,6 +324,28 @@ if (!isset($current_page)) {
                 <a href="<?= url('/superadmin/add-loan-deduction') ?>" class="nav-link ps-5 small text-white-50">Add Deduction</a>
             </div>
 
+            <a href="#householdSubmenu" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="false">
+                <span><i class="fas fa-shopping-basket"></i> Household</span>
+                <i class="fas fa-chevron-down fa-xs ms-auto" style="width: auto; opacity: 0.5;"></i>
+            </a>
+            <div class="collapse <?= in_array($current_page, ['household', 'add_household']) ? 'show' : '' ?>" id="householdSubmenu" style="background: rgba(0,0,0,0.1);">
+                <a href="<?= url('/superadmin/household') ?>" class="nav-link ps-5 small text-white-50">View Household</a>
+                <a href="<?= url('/superadmin/add-household-deduction') ?>" class="nav-link ps-5 small text-white-50">Add Deduction</a>
+            </div>
+
+            <a href="#sharesSubmenu" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="false">
+                <span><i class="fas fa-chart-pie"></i> Shares</span>
+                <i class="fas fa-chevron-down fa-xs ms-auto" style="width: auto; opacity: 0.5;"></i>
+            </a>
+            <div class="collapse <?= in_array($current_page, ['shares', 'add_share']) ? 'show' : '' ?>" id="sharesSubmenu" style="background: rgba(0,0,0,0.1);">
+                <a href="<?= url('/superadmin/shares') ?>" class="nav-link ps-5 small text-white-50">View Shares</a>
+                <a href="<?= url('/superadmin/add-share-deduction') ?>" class="nav-link ps-5 small text-white-50">Add Deduction</a>
+            </div>
+
+            <a href="<?= url('/superadmin/reports') ?>" class="nav-link <?= $current_page === 'reports' ? 'active' : '' ?>">
+                <i class="fas fa-chart-line"></i> Reports
+            </a>
+
             <div class="sidebar-label mt-3">System</div>
             <a href="<?= url('/superadmin/system-logs') ?>" class="nav-link <?= $current_page === 'system_logs' ? 'active' : '' ?>">
                 <i class="fas fa-file-alt"></i> Logs

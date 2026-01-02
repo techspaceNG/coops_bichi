@@ -68,8 +68,8 @@
             width: 250px;
             height: calc(100vh - 56px);
             overflow-y: auto;
-            background-color: #f8f9fa;
-            border-right: 1px solid #dee2e6;
+            background-color: #1a3f85; /* Dark Blue match header */
+            border-right: 1px solid #1a3f85;
             z-index: 100;
             transition: all 0.3s ease;
         }
@@ -90,6 +90,45 @@
             margin-left: auto;
         }
         
+        /* Sidebar Links */
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.2rem;
+            border-radius: 0.25rem;
+        }
+        
+        .sidebar .nav-link:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #fff;
+            color: #1a3f85;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar .nav-link i {
+            width: 24px;
+            text-align: center;
+        }
+        
+        .sidebar .border-bottom {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .sidebar .border-top {
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .sidebar .fw-bold {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
         /* Custom styling for dashboard cards */
         .card.border-left-primary {
             border-left: 4px solid var(--color-primary-500) !important;
@@ -105,12 +144,6 @@
         
         .card.border-left-danger {
             border-left: 4px solid #dc3545 !important;
-        }
-        
-        .nav-link.active {
-            background-color: var(--color-primary-100);
-            color: var(--color-primary-800);
-            font-weight: 500;
         }
         
         @media (max-width: 768px) {

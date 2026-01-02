@@ -62,6 +62,7 @@ final class Database
             'username' => $config['username'],
             'password' => $config['password'],
             'charset'  => $config['charset'],
+            'port'     => $config['port'],
             'options'  => [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

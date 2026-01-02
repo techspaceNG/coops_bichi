@@ -73,6 +73,7 @@ final class Config
             'username' => getenv('DB_USER') ?: 'root',
             'password' => getenv('DB_PASS') ?: '',
             'charset'  => getenv('DB_CHARSET') ?: 'utf8mb4',
+            'port'     => getenv('DB_PORT') ?: 3306,
         ];
     }
 }

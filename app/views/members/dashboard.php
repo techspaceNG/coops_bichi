@@ -19,7 +19,7 @@
         </div>
         
         <!-- Account Summary Section -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <!-- Savings Balance -->
             <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex items-center">
@@ -28,7 +28,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-600">Savings Balance</p>
-                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format($member->savings_balance, 2) ?></h3>
+                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format(($member->savings_balance ?? 0), 2) ?></h3>
                     </div>
                 </div>
                 <div class="mt-4">
@@ -46,7 +46,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-600">Loan Balance</p>
-                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format($member->loan_balance, 2) ?></h3>
+                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format(($member->loan_balance ?? 0), 2) ?></h3>
                     </div>
                 </div>
                 <div class="mt-4">
@@ -64,7 +64,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-600">Household Purchases</p>
-                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format($member->household_balance, 2) ?></h3>
+                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format(($member->household_balance ?? 0), 2) ?></h3>
                     </div>
                 </div>
                 <div class="mt-4">
@@ -82,7 +82,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-600">Shares Value</p>
-                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format($member->shares_balance, 2) ?></h3>
+                        <h3 class="text-2xl font-bold text-gray-800">₦<?= number_format(($member->shares_balance ?? 0), 2) ?></h3>
                     </div>
                 </div>
                 <div class="mt-4">

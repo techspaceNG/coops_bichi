@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="/Coops_Bichi/public/member/savings" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                    <a href="<?= url('/member/savings') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
                         View Savings Details <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="/Coops_Bichi/public/member/loans" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                    <a href="<?= url('/member/loans') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
                         View Loan Details <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="/Coops_Bichi/public/member/household" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                    <a href="<?= url('/member/household') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
                         View Purchase Details <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="/Coops_Bichi/public/member/shares" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                    <a href="<?= url('/member/shares') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
                         View Shares Details <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -97,28 +97,28 @@
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="/Coops_Bichi/public/member/loans/apply" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
+                <a href="<?= url('/member/loans/apply') ?>" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mb-3">
                         <i class="fas fa-file-invoice-dollar text-xl"></i>
                     </div>
                     <span class="text-gray-800 font-medium">Apply for Loan</span>
                 </a>
                 
-                <a href="/Coops_Bichi/public/member/savings/withdraw" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
+                <a href="<?= url('/member/savings/withdraw') ?>" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mb-3">
                         <i class="fas fa-money-bill-wave text-xl"></i>
                     </div>
                     <span class="text-gray-800 font-medium">Request Withdrawal</span>
                 </a>
                 
-                <a href="/Coops_Bichi/public/member/household/order" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
+                <a href="<?= url('/member/household/order') ?>" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mb-3">
                         <i class="fas fa-cart-plus text-xl"></i>
                     </div>
                     <span class="text-gray-800 font-medium">Apply for Household Purchase</span>
                 </a>
                 
-                <a href="/Coops_Bichi/public/member/profile" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
+                <a href="<?= url('/member/profile') ?>" class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50 transition-colors">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mb-3">
                         <i class="fas fa-user-edit text-xl"></i>
                     </div>
@@ -131,7 +131,7 @@
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-800">Recent Notifications</h2>
-                <a href="/Coops_Bichi/public/member/notifications" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                <a href="<?= url('/member/notifications') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
                     View All <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>
@@ -192,7 +192,7 @@
         <div class="bg-white rounded-lg shadow-md p-6">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-800">Recent Transactions</h2>
-                <a href="/Coops_Bichi/public/member/transactions" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                <a href="<?= url('/member/transactions') ?>" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
                     View All <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>

@@ -304,27 +304,17 @@ final class AuthController extends Controller
             return;
         }
         
-        // Get base URL
-        $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-        $baseUrl = '';
-        
-        // If we're in a subdirectory, extract it properly
-        if ($scriptDir !== '/' && $scriptDir !== '\\') {
-            $baseUrl = $scriptDir;
-            
-            // Handle XAMPP-specific case where script name might be /Coops_Bichi/public/index.php
-            if (strpos($baseUrl, '/public') !== false) {
-                $baseUrl = substr($baseUrl, 0, strpos($baseUrl, '/public'));
-            }
-        }
-        
-        // Additional fallback for XAMPP installations
-        if (empty($baseUrl)) {
-            $requestUrl = $_SERVER['REQUEST_URI'];
-            $lowerRequestUrl = strtolower($requestUrl);
-            if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                $baseUrl = '/Coops_Bichi'; // Use consistent uppercase C
-            }
+        // Get base URL for redirects
+        $publicUrl = \App\Core\Config::getPublicUrl();
+        // Remove /public from the end if it exists, as we want the base URL for the view
+        $baseUrl = rtrim($publicUrl, '/public');
+         // If publicUrl is empty (Vercel), baseUrl is empty
+        if ($publicUrl === '') {
+            $baseUrl = '';
+        } elseif (substr($publicUrl, -7) === '/public') {
+             $baseUrl = substr($publicUrl, 0, -7);
+        } else {
+             $baseUrl = $publicUrl;
         }
         
         // Display admin login form
@@ -339,29 +329,7 @@ final class AuthController extends Controller
      */
     public function processAdminLogin(): void
     {
-        // Get base URL for redirects
-        $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-        $baseUrl = '';
-        
-        if ($scriptDir !== '/' && $scriptDir !== '\\') {
-            $baseUrl = $scriptDir;
-            
-            // Handle XAMPP-specific case
-            if (strpos($baseUrl, '/public') !== false) {
-                $baseUrl = substr($baseUrl, 0, strpos($baseUrl, '/public'));
-            }
-        }
-        
-        // Additional fallback
-        if (empty($baseUrl)) {
-            $requestUrl = $_SERVER['REQUEST_URI'];
-            $lowerRequestUrl = strtolower($requestUrl);
-            if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                $baseUrl = '/Coops_Bichi'; // Use consistent uppercase C
-            }
-        }
-        
-        $publicUrl = $baseUrl . '/public';
+        $publicUrl = \App\Core\Config::getPublicUrl();
         
         // Check if already logged in
         if (Auth::isAdminLoggedIn()) {

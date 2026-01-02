@@ -23,6 +23,8 @@ if (!$host) {
     echo "ERROR: DB_HOST not set.<br>";
     exit;
 }
+echo "Target Host: " . $host . " (Port: 3306/default)<br>";
+flush();
 
 // Timeout
 set_time_limit(15);

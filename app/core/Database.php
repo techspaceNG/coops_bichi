@@ -37,6 +37,8 @@ final class Database
             
             try {
                 self::$connection = new PDO($dsn, $config['username'], $config['password'], $config['options']);
+                // Disable ONLY_FULL_GROUP_BY for compatibility with existing queries
+                self::$connection->exec("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
             } catch (PDOException $e) {
                 // Log error and rethrow
                 error_log('Database connection failed: ' . $e->getMessage());

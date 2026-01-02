@@ -85,12 +85,12 @@ final class ShareController extends AbstractController
                 m.name as member_name,
                 m.coop_no as member_coop_no,
                 m.shares_balance,
-                s.id,
-                s.units,
-                s.unit_value,
-                s.status,
-                s.created_at,
-                s.updated_at
+                MAX(s.id) as id,
+                SUM(s.units) as units,
+                MAX(s.unit_value) as unit_value,
+                MAX(s.status) as status,
+                MAX(s.created_at) as created_at,
+                MAX(s.updated_at) as updated_at
             FROM 
                 members m
             LEFT JOIN 

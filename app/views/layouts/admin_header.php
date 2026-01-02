@@ -1,3 +1,4 @@
+<?php $publicUrl = \App\Core\Config::getPublicUrl(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <title><?= isset($page_title) ? htmlspecialchars($page_title) . ' - ' : '' ?>FCET Bichi Cooperative Admin</title>
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/Coops_Bichi/public/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= $publicUrl ?>/assets/images/favicon.ico" type="image/x-icon">
     
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -18,7 +19,7 @@
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link href="/Coops_Bichi/public/assets/css/admin.css" rel="stylesheet">
+    <link href="<?= $publicUrl ?>/assets/css/admin.css" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -178,8 +179,8 @@
                 <!-- Left side: Logo and Main Nav -->
                 <div class="flex items-center">
                     <!-- Logo -->
-                    <a href="/Coops_Bichi/public/admin/dashboard" class="flex items-center">
-                        <img src="/Coops_Bichi/public/assets/images/logo.png" alt="FCET Bichi Cooperative" class="h-8 w-auto">
+                    <a href="<?= $publicUrl ?>/admin/dashboard" class="flex items-center">
+                        <img src="<?= $publicUrl ?>/assets/images/logo.png" alt="FCET Bichi Cooperative" class="h-8 w-auto">
                         <span class="ml-2 text-lg font-semibold text-gray-800">Admin Portal</span>
                     </a>
                     
@@ -190,25 +191,25 @@
                     
                     <!-- Main Navigation (Desktop) -->
                     <nav class="hidden md:flex ml-8 space-x-6">
-                        <a href="/Coops_Bichi/public/admin/dashboard" class="<?= $current_page === 'dashboard' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
+                        <a href="<?= $publicUrl ?>/admin/dashboard" class="<?= $current_page === 'dashboard' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
                             Dashboard
                         </a>
-                        <a href="/Coops_Bichi/public/admin/members" class="<?= $current_page === 'members' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
+                        <a href="<?= $publicUrl ?>/admin/members" class="<?= $current_page === 'members' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
                             Members
                         </a>
-                        <a href="/Coops_Bichi/public/admin/savings" class="<?= $current_page === 'savings' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
+                        <a href="<?= $publicUrl ?>/admin/savings" class="<?= $current_page === 'savings' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
                             Savings
                         </a>
-                        <a href="/Coops_Bichi/public/admin/shares" class="<?= $current_page === 'shares' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
+                        <a href="<?= $publicUrl ?>/admin/shares" class="<?= $current_page === 'shares' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
                             Shares
                         </a>
-                        <a href="/Coops_Bichi/public/admin/loans" class="<?= $current_page === 'loans' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
+                        <a href="<?= $publicUrl ?>/admin/loans" class="<?= $current_page === 'loans' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
                             Loans
                         </a>
-                        <a href="/Coops_Bichi/public/admin/household" class="<?= $current_page === 'household' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
+                        <a href="<?= $publicUrl ?>/admin/household" class="<?= $current_page === 'household' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
                             Household
                         </a>
-                        <a href="/Coops_Bichi/public/admin/reports" class="<?= $current_page === 'reports' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
+                        <a href="<?= $publicUrl ?>/admin/reports" class="<?= $current_page === 'reports' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-600 hover:text-gray-900' ?> px-1 py-2 text-sm font-medium">
                             Reports
                         </a>
                     </nav>
@@ -243,7 +244,7 @@
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-sm font-semibold text-gray-900">Notifications</h3>
                                     <?php if (isset($unread_notifications_count) && $unread_notifications_count > 0): ?>
-                                        <a href="/Coops_Bichi/public/admin/notifications/mark-all-read" class="text-xs text-primary-600 hover:text-primary-800">Mark all as read</a>
+                                        <a href="<?= $publicUrl ?>/admin/notifications/mark-all-read" class="text-xs text-primary-600 hover:text-primary-800">Mark all as read</a>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -291,7 +292,7 @@
                             </div>
                             <?php if (isset($recent_notifications) && !empty($recent_notifications)): ?>
                                 <div class="px-4 py-2 border-t border-gray-200">
-                                    <a href="/Coops_Bichi/public/admin/notifications" class="block text-center text-xs font-medium text-primary-600 hover:text-primary-800">
+                                    <a href="<?= $publicUrl ?>/admin/notifications" class="block text-center text-xs font-medium text-primary-600 hover:text-primary-800">
                                         View all notifications
                                     </a>
                                 </div>
@@ -307,21 +308,21 @@
                     <!-- Profile dropdown -->
                     <div class="relative">
                         <button id="userMenuButton" class="flex items-center text-sm focus:outline-none p-1">
-                            <img class="h-8 w-8 rounded-full" src="<?= isset($admin) && !empty($admin['profile_image']) ? htmlspecialchars($admin['profile_image']) : '/Coops_Bichi/public/assets/images/profile.png' ?>" alt="Profile">
+                            <img class="h-8 w-8 rounded-full" src="<?= isset($admin) && !empty($admin['profile_image']) ? htmlspecialchars($admin['profile_image']) : '<?= $publicUrl ?>/assets/images/profile.png' ?>" alt="Profile">
                             <span class="hidden md:block ml-2 text-sm text-gray-700"><?= isset($admin) && isset($admin['first_name']) ? htmlspecialchars($admin['first_name']) : 'Admin' ?></span>
                             <i class="ml-1 fas fa-chevron-down text-gray-400"></i>
                         </button>
                         
                                                     <!-- User dropdown menu -->
                         <div id="userMenu" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 hidden z-10">
-                            <a href="/Coops_Bichi/public/admin/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="<?= $publicUrl ?>/admin/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Your Profile
                             </a>
-                            <a href="/Coops_Bichi/public/admin/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="<?= $publicUrl ?>/admin/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Settings
                             </a>
                             <div class="border-t border-gray-100"></div>
-                            <a href="/Coops_Bichi/public/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="<?= $publicUrl ?>/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Logout
                             </a>
                         </div>
@@ -353,21 +354,21 @@
                                     <div>
                                         <h4 class="text-sm font-medium text-gray-800">Admin Documentation</h4>
                                         <p class="text-sm text-gray-500">Browse the complete admin documentation for detailed instructions.</p>
-                                        <a href="/Coops_Bichi/public/admin/docs" class="mt-2 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500">
+                                        <a href="<?= $publicUrl ?>/admin/docs" class="mt-2 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500">
                                             View Documentation <i class="fas fa-arrow-right ml-1"></i>
                                         </a>
                                     </div>
                                     <div>
                                         <h4 class="text-sm font-medium text-gray-800">Quick Help Videos</h4>
                                         <p class="text-sm text-gray-500">Watch short tutorial videos for common tasks.</p>
-                                        <a href="/Coops_Bichi/public/admin/tutorials" class="mt-2 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500">
+                                        <a href="<?= $publicUrl ?>/admin/tutorials" class="mt-2 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500">
                                             Watch Tutorials <i class="fas fa-arrow-right ml-1"></i>
                                         </a>
                                     </div>
                                     <div>
                                         <h4 class="text-sm font-medium text-gray-800">Contact Support</h4>
                                         <p class="text-sm text-gray-500">Need further assistance? Reach out to our technical team.</p>
-                                        <a href="/Coops_Bichi/public/admin/support" class="mt-2 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500">
+                                        <a href="<?= $publicUrl ?>/admin/support" class="mt-2 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500">
                                             Contact Support <i class="fas fa-arrow-right ml-1"></i>
                                         </a>
                                     </div>
@@ -391,25 +392,25 @@
         <div id="mobileNav" class="fixed left-0 right-0 top-16 bg-white border-b border-gray-200 shadow-md z-20 hidden">
             <div class="py-3 px-4">
                 <nav class="flex flex-col space-y-3">
-                    <a href="/Coops_Bichi/public/admin/dashboard" class="<?= $current_page === 'dashboard' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/dashboard" class="<?= $current_page === 'dashboard' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
                         <i class="fas fa-tachometer-alt mr-3 w-5 text-center"></i> Dashboard
                     </a>
-                    <a href="/Coops_Bichi/public/admin/members" class="<?= $current_page === 'members' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/members" class="<?= $current_page === 'members' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
                         <i class="fas fa-users mr-3 w-5 text-center"></i> Members
                     </a>
-                    <a href="/Coops_Bichi/public/admin/savings" class="<?= $current_page === 'savings' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/savings" class="<?= $current_page === 'savings' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
                         <i class="fas fa-piggy-bank mr-3 w-5 text-center"></i> Savings
                     </a>
-                    <a href="/Coops_Bichi/public/admin/shares" class="<?= $current_page === 'shares' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/shares" class="<?= $current_page === 'shares' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
                         <i class="fas fa-chart-pie mr-3 w-5 text-center"></i> Shares
                     </a>
-                    <a href="/Coops_Bichi/public/admin/loans" class="<?= $current_page === 'loans' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/loans" class="<?= $current_page === 'loans' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
                         <i class="fas fa-hand-holding-usd mr-3 w-5 text-center"></i> Loans
                     </a>
-                    <a href="/Coops_Bichi/public/admin/household" class="<?= $current_page === 'household' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/household" class="<?= $current_page === 'household' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
                         <i class="fas fa-home mr-3 w-5 text-center"></i> Household
                     </a>
-                    <a href="/Coops_Bichi/public/admin/reports" class="<?= $current_page === 'reports' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/reports" class="<?= $current_page === 'reports' ? 'text-primary-600 bg-primary-50 font-medium' : 'text-gray-700' ?> py-3 px-4 hover:bg-gray-50 rounded-md text-base flex items-center">
                         <i class="fas fa-chart-bar mr-3 w-5 text-center"></i> Reports
                     </a>
                 </nav>
@@ -555,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
         globalSearch.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                window.location.href = '/Coops_Bichi/public/admin/search?q=' + encodeURIComponent(this.value);
+                window.location.href = '<?= $publicUrl ?>/admin/search?q=' + encodeURIComponent(this.value);
             }
         });
     }

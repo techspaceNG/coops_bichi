@@ -90,8 +90,14 @@ if ($position !== false) {
 $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
 $baseUrl = '';
 
+// Check if we are in a serverless environment (Vercel)
+if (defined('SERVERLESS_ENVIRONMENT') && SERVERLESS_ENVIRONMENT) {
+    $baseUrl = '';
+    // On Vercel, we might need to strip /api/index.php if it's there, 
+    // but usually REQUEST_URI is what we want.
+} 
 // If we're in a subdirectory, extract it properly
-if ($scriptDir !== '/' && $scriptDir !== '\\') {
+else if ($scriptDir !== '/' && $scriptDir !== '\\') {
     // Special handling for Coops_Bichi in XAMPP
     if (stripos($requestUrl, '/coops_bichi/public') === 0) {
         $baseUrl = '/Coops_Bichi/public';

@@ -53,12 +53,14 @@ final class Database
      */
     public static function getConfig(): array
     {
+        $config = \App\Core\Config::getDatabaseConfig();
+        
         return [
-            'host'     => 'localhost',
-            'dbname'   => 'coops_bichi',
-            'username' => 'root',
-            'password' => '',
-            'charset'  => 'utf8mb4',
+            'host'     => $config['host'],
+            'dbname'   => $config['dbname'],
+            'username' => $config['username'],
+            'password' => $config['password'],
+            'charset'  => $config['charset'],
             'options'  => [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

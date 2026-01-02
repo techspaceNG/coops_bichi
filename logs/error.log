@@ -17328,3 +17328,183 @@ Stack trace:
                 LIMIT 2
 [19-May-2025 14:56:56 Europe/Berlin] Database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'loan_type' in 'field list'
 [19-May-2025 14:57:26 Europe/Berlin] Error creating notification: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'updated_at' in 'field list'
+[27-May-2025 18:42:20 Europe/Berlin] PHP Warning:  Uncaught PDOException: PDO::__construct(): Error while reading greeting packet. PID=2432 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php:31
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(31): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\xampp\htdocs\Coops_Bichi\app\models\Announcement.php(139): App\Helpers\Database::getConnection()
+#2 C:\xampp\htdocs\Coops_Bichi\app\controllers\HomeController.php(23): App\Models\Announcement::getPublished(3)
+#3 C:\xampp\htdocs\Coops_Bichi\public\index.php(197): App\Controllers\HomeController->index()
+#4 {main}
+
+Next PDOException: SQLSTATE[HY000] [2006] MySQL server has gone away in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php:31
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(31): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\xampp\htdocs\Coops_Bichi\app\models\Announcement.php(139): App\Helpers\Database::getConnection()
+#2 C:\xampp\htdocs\Coops_Bichi\app\controllers\HomeController.php(23): App\Models\Announcement::getPublished(3)
+#3 C:\xampp\htdocs\Coops_Bichi\public\index.php(197): App\Controllers\HomeController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php on line 31
+[27-May-2025 18:42:20 Europe/Berlin] PHP Fatal error:  Maximum execution time of 120 seconds exceeded in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php on line 32
+[02-Jan-2026 07:10:59 Europe/Berlin] PHP Warning:  Undefined variable $departments in C:\xampp\htdocs\Coops_Bichi\app\views\superadmin\modules\loans.php on line 41
+[02-Jan-2026 07:10:59 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, null given in C:\xampp\htdocs\Coops_Bichi\app\views\superadmin\modules\loans.php on line 41
+[02-Jan-2026 09:24:22 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:22 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:24:25 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:25 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:24:28 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:28 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:24:30 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:30 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:24:31 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:31 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:24:31 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:31 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:24:32 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:32 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:24:33 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:24:33 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT role FRO...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT role FRO...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(138): App\Config\Database::fetchOne('SELECT role FRO...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\core\Controller.php(134): App\Helpers\Auth::isSuperAdmin()
+#8 C:\xampp\htdocs\Coops_Bichi\app\controllers\superadmin\AbstractController.php(21): App\Core\Controller->requireSuperAdmin()
+#9 C:\xampp\htdocs\Coops_Bichi\public\index.php(184): App\Controllers\Superadmin\AbstractController->__construct()
+#10 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:25:23 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 41
+[02-Jan-2026 09:25:23 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: trim(): Argument #1 ($string) must be of type string, null given in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php:43
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php(43): trim(NULL)
+#1 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(50): App\Helpers\Environment::load()
+#2 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(26): App\Helpers\Database::getConfig()
+#3 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(75): App\Helpers\Database::getConnection()
+#4 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(90): App\Helpers\Database::executeQuery('SELECT * FROM a...', Array)
+#5 C:\xampp\htdocs\Coops_Bichi\app\config\Database.php(44): App\Helpers\Database::fetchOne('SELECT * FROM a...', Array)
+#6 C:\xampp\htdocs\Coops_Bichi\app\helpers\Auth.php(177): App\Config\Database::fetchOne('SELECT * FROM a...', Array)
+#7 C:\xampp\htdocs\Coops_Bichi\app\controllers\AuthController.php(395): App\Helpers\Auth::validateAdminLogin('superadmin', 'superadmin123')
+#8 C:\xampp\htdocs\Coops_Bichi\public\index.php(203): App\Controllers\AuthController->processAdminLogin()
+#9 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Environment.php on line 43
+[02-Jan-2026 09:26:52 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[02-Jan-2026 09:27:15 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[02-Jan-2026 09:27:30 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[02-Jan-2026 10:04:25 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for b601xv5zyh0wppvocrcx-mysql.services.clever-cloud.com failed: No such host is known. 
+[02-Jan-2026 10:04:29 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for b601xv5zyh0wppvocrcx-mysql.services.clever-cloud.com failed: No such host is known. 
+[02-Jan-2026 10:05:35 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for b601xv5zyh0wppvocrcx-mysql.services.clever-cloud.com failed: No such host is known. 
+[02-Jan-2026 10:05:52 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for b601xv5zyh0wppvocrcx-mysql.services.clever-cloud.com failed: No such host is known. 
+[02-Jan-2026 10:09:01 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for b601xv5zyh0wppvocrcx-mysql.services.clever-cloud.com failed: No such host is known. 
+[02-Jan-2026 10:09:10 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for b601xv5zyh0wppvocrcx-mysql.services.clever-cloud.com failed: No such host is known. 
+[02-Jan-2026 10:24:25 Europe/Berlin] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for b601xv5zyh0wppvocrcx-mysql.services.clever-cloud.com failed: No such host is known. 
+[02-Jan-2026 10:34:26 Europe/Berlin] PHP Warning:  Uncaught PDOException: PDO::__construct(): Error while reading greeting packet. PID=9804 in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php:31
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(31): PDO->__construct('mysql:host=b601...', 'umun6oxhono3hnl...', '3SrAUJQCbLlLWw4...', Array)
+#1 C:\xampp\htdocs\Coops_Bichi\app\models\Announcement.php(139): App\Helpers\Database::getConnection()
+#2 C:\xampp\htdocs\Coops_Bichi\app\controllers\HomeController.php(23): App\Models\Announcement::getPublished(3)
+#3 C:\xampp\htdocs\Coops_Bichi\public\index.php(203): App\Controllers\HomeController->index()
+#4 {main}
+
+Next PDOException: SQLSTATE[HY000] [2006] MySQL server has gone away in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php:31
+Stack trace:
+#0 C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php(31): PDO->__construct('mysql:host=b601...', 'umun6oxhono3hnl...', '3SrAUJQCbLlLWw4...', Array)
+#1 C:\xampp\htdocs\Coops_Bichi\app\models\Announcement.php(139): App\Helpers\Database::getConnection()
+#2 C:\xampp\htdocs\Coops_Bichi\app\controllers\HomeController.php(23): App\Models\Announcement::getPublished(3)
+#3 C:\xampp\htdocs\Coops_Bichi\public\index.php(203): App\Controllers\HomeController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php on line 31
+[02-Jan-2026 10:34:26 Europe/Berlin] PHP Fatal error:  Maximum execution time of 120 seconds exceeded in C:\xampp\htdocs\Coops_Bichi\app\helpers\Database.php on line 32

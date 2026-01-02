@@ -36,34 +36,7 @@ final class AuthController extends Controller
      */
     public function login(): void
     {
-        // Get base URL for redirects
-        $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-        $baseUrl = '';
-        
-        if ($scriptDir !== '/' && $scriptDir !== '\\') {
-            $baseUrl = $scriptDir;
-            
-            // Handle XAMPP-specific case
-            if (strpos(strtolower($baseUrl), '/public') !== false) {
-                $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-                
-                // Force consistent case
-                if (strtolower($baseUrl) === '/coops_bichi') {
-                    $baseUrl = '/Coops_Bichi';
-                }
-            }
-        }
-        
-        // Additional fallback
-        if (empty($baseUrl)) {
-            $requestUrl = $_SERVER['REQUEST_URI'];
-            $lowerRequestUrl = strtolower($requestUrl);
-            if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                $baseUrl = '/Coops_Bichi';
-            }
-        }
-        
-        $publicUrl = $baseUrl . '/public';
+        $publicUrl = \App\Core\Config::getPublicUrl();
         
         // Check if already logged in
         if (Auth::isMemberLoggedIn()) {
@@ -79,34 +52,7 @@ final class AuthController extends Controller
      */
     public function register(): void
     {
-        // Get base URL for redirects
-        $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-        $baseUrl = '';
-        
-        if ($scriptDir !== '/' && $scriptDir !== '\\') {
-            $baseUrl = $scriptDir;
-            
-            // Handle XAMPP-specific case
-            if (strpos(strtolower($baseUrl), '/public') !== false) {
-                $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-                
-                // Force consistent case
-                if (strtolower($baseUrl) === '/coops_bichi') {
-                    $baseUrl = '/Coops_Bichi';
-                }
-            }
-        }
-        
-        // Additional fallback
-        if (empty($baseUrl)) {
-            $requestUrl = $_SERVER['REQUEST_URI'];
-            $lowerRequestUrl = strtolower($requestUrl);
-            if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                $baseUrl = '/Coops_Bichi';
-            }
-        }
-        
-        $publicUrl = $baseUrl . '/public';
+        $publicUrl = \App\Core\Config::getPublicUrl();
         
         // Check if already logged in
         if (Auth::isMemberLoggedIn()) {
@@ -127,34 +73,7 @@ final class AuthController extends Controller
      */
     public function processRegister(): void
     {
-        // Get base URL for redirects
-        $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-        $baseUrl = '';
-        
-        if ($scriptDir !== '/' && $scriptDir !== '\\') {
-            $baseUrl = $scriptDir;
-            
-            // Handle XAMPP-specific case
-            if (strpos(strtolower($baseUrl), '/public') !== false) {
-                $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-                
-                // Force consistent case
-                if (strtolower($baseUrl) === '/coops_bichi') {
-                    $baseUrl = '/Coops_Bichi';
-                }
-            }
-        }
-        
-        // Additional fallback
-        if (empty($baseUrl)) {
-            $requestUrl = $_SERVER['REQUEST_URI'];
-            $lowerRequestUrl = strtolower($requestUrl);
-            if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                $baseUrl = '/Coops_Bichi';
-            }
-        }
-        
-        $publicUrl = $baseUrl . '/public';
+        $publicUrl = \App\Core\Config::getPublicUrl();
         
         // Check if already logged in
         if (Auth::isMemberLoggedIn()) {
@@ -306,34 +225,7 @@ final class AuthController extends Controller
      */
     public function logout(): void
     {
-        // Get base URL for redirects
-        $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-        $baseUrl = '';
-        
-        if ($scriptDir !== '/' && $scriptDir !== '\\') {
-            $baseUrl = $scriptDir;
-            
-            // Handle XAMPP-specific case
-            if (strpos(strtolower($baseUrl), '/public') !== false) {
-                $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-                
-                // Force consistent case
-                if (strtolower($baseUrl) === '/coops_bichi') {
-                    $baseUrl = '/Coops_Bichi';
-                }
-            }
-        }
-        
-        // Additional fallback
-        if (empty($baseUrl)) {
-            $requestUrl = $_SERVER['REQUEST_URI'];
-            $lowerRequestUrl = strtolower($requestUrl);
-            if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                $baseUrl = '/Coops_Bichi';
-            }
-        }
-        
-        $publicUrl = $baseUrl . '/public';
+        $publicUrl = \App\Core\Config::getPublicUrl();
         
         // Clear remember cookie if exists
         if (isset($_COOKIE['remember_token'])) {
@@ -527,34 +419,7 @@ final class AuthController extends Controller
      */
     public function processLogin(): void
     {
-        // Get base URL for redirects
-        $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-        $baseUrl = '';
-        
-        if ($scriptDir !== '/' && $scriptDir !== '\\') {
-            $baseUrl = $scriptDir;
-            
-            // Handle XAMPP-specific case
-            if (strpos(strtolower($baseUrl), '/public') !== false) {
-                $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-                
-                // Force consistent case
-                if (strtolower($baseUrl) === '/coops_bichi') {
-                    $baseUrl = '/Coops_Bichi';
-                }
-            }
-        }
-        
-        // Additional fallback
-        if (empty($baseUrl)) {
-            $requestUrl = $_SERVER['REQUEST_URI'];
-            $lowerRequestUrl = strtolower($requestUrl);
-            if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                $baseUrl = '/Coops_Bichi';
-            }
-        }
-        
-        $publicUrl = $baseUrl . '/public';
+        $publicUrl = \App\Core\Config::getPublicUrl();
         
         // Check if already logged in
         if (Auth::isMemberLoggedIn() || Session::isMember()) {

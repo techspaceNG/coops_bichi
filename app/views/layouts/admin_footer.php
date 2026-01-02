@@ -1,16 +1,17 @@
         </div> <!-- This closes the pt-16 div from admin_header.php -->
+<?php $publicUrl = \App\Core\Config::getPublicUrl(); ?>
     </div> <!-- This closes any remaining open divs -->
 
     <footer class="bg-white py-4 border-t border-gray-200 mt-auto">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="md:flex md:items-center md:justify-between">
                 <div class="flex items-center">
-                    <img src="/Coops_Bichi/public/assets/images/logo.png" alt="FCET Bichi Cooperative" class="h-10 w-auto mr-2">
+                    <img src="<?= $publicUrl ?>/assets/images/logo.png" alt="FCET Bichi Cooperative" class="h-10 w-auto mr-2">
                     <span class="text-sm text-gray-500">&copy; <?= date('Y') ?> FCET Bichi Staff Multipurpose Cooperative Society</span>
                 </div>
                 <div class="mt-4 md:mt-0">
                     <p class="text-sm text-gray-500">
-                        Portal Version <?= defined('APP_VERSION') ? htmlspecialchars(APP_VERSION) : '1.0.0' ?> | <a href="/admin/changelog" class="text-primary-600 hover:text-primary-700">View Changelog</a>
+                        Portal Version <?= defined('APP_VERSION') ? htmlspecialchars(APP_VERSION) : '1.0.0' ?> | <a href="<?= $publicUrl ?>/admin/changelog" class="text-primary-600 hover:text-primary-700">View Changelog</a>
                     </p>
                 </div>
             </div>
@@ -21,9 +22,9 @@
                     from <?= isset($admin['last_login_ip']) ? htmlspecialchars($admin['last_login_ip']) : 'Unknown' ?>
                 </p>
                 <p class="text-xs text-gray-500">
-                    <a href="/admin/logs" class="text-primary-600 hover:text-primary-700">Activity Logs</a> | 
-                    <a href="/admin/terms" class="text-primary-600 hover:text-primary-700">Terms of Use</a> | 
-                    <a href="/admin/privacy" class="text-primary-600 hover:text-primary-700">Privacy Policy</a> |
+                    <a href="<?= $publicUrl ?>/admin/logs" class="text-primary-600 hover:text-primary-700">Activity Logs</a> | 
+                    <a href="<?= $publicUrl ?>/admin/terms" class="text-primary-600 hover:text-primary-700">Terms of Use</a> | 
+                    <a href="<?= $publicUrl ?>/admin/privacy" class="text-primary-600 hover:text-primary-700">Privacy Policy</a> |
                     <span class="text-gray-600">Built by TechspaceNG</span>
                 </p>
             </div>

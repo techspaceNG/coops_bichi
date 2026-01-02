@@ -50,19 +50,22 @@ class Utility
      */
     public static function redirect(string $url): void
     {
-        // Check if the URL is for the application but missing /public
-        if (strpos(strtolower($url), '/coops_bichi/') === 0 && strpos(strtolower($url), '/public/') === false) {
-            // Insert /public/ after /Coops_Bichi/
-            $url = preg_replace('#^(/Coops_Bichi/)#i', '$1public/', $url);
+        // If the URL is already absolute (contains http:// or https://), redirect directly
+        if (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0) {
+            header("Location: $url");
+            exit;
         }
+
+        // Clean up the URL
+        $url = ltrim($url, '/');
         
-        // Ensure we have the correct casing and path format
-        if (strpos(strtolower($url), '/coops_bichi') === 0) {
-            // Force consistent case for /Coops_Bichi/
-            $url = preg_replace('#^/coops_bichi#i', '/Coops_Bichi', $url);
-        }
+        // Get base URL
+        $publicUrl = \App\Core\Config::getPublicUrl();
         
-        header("Location: $url");
+        // Construct final URL
+        $finalUrl = $publicUrl . '/' . $url;
+        
+        header("Location: $finalUrl");
         exit;
     }
     

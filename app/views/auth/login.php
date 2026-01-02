@@ -1,34 +1,5 @@
 <?php
-// Calculate base URL 
-$scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-$baseUrl = '';
-
-// If we're in a subdirectory, extract it properly
-if ($scriptDir !== '/' && $scriptDir !== '\\') {
-    $baseUrl = $scriptDir;
-    
-    // Handle XAMPP-specific case
-    if (strpos(strtolower($baseUrl), '/public') !== false) {
-        $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-        
-        // Force consistent case
-        if (strtolower($baseUrl) === '/coops_bichi') {
-            $baseUrl = '/Coops_Bichi';
-        }
-    }
-}
-
-// Additional fallback
-if (empty($baseUrl)) {
-    $requestUrl = $_SERVER['REQUEST_URI'];
-    $lowerRequestUrl = strtolower($requestUrl);
-    if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-        $baseUrl = '/Coops_Bichi';
-    }
-}
-
-// Add /public to the base URL
-$publicUrl = $baseUrl . '/public';
+$publicUrl = \App\Core\Config::getPublicUrl();
 
 require_once APP_ROOT . '/views/layouts/header.php'; ?>
 

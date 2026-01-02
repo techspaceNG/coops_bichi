@@ -38,9 +38,14 @@ final class Environment
                 continue; // Skip comments
             }
             
-            list($name, $value) = explode('=', $line, 2);
-            $name = trim($name);
-            $value = trim($value);
+            $parts = explode('=', $line, 2);
+            
+            if (count($parts) !== 2) {
+                continue;
+            }
+            
+            $name = trim($parts[0]);
+            $value = trim($parts[1]);
             
             // Remove quotes if present
             if (strlen($value) > 1 && 

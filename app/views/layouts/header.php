@@ -1,34 +1,5 @@
 <?php
-// Calculate base URL 
-$scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-$baseUrl = '';
-
-// If we're in a subdirectory, extract it properly
-if ($scriptDir !== '/' && $scriptDir !== '\\') {
-    $baseUrl = $scriptDir;
-    
-    // Handle XAMPP-specific case
-    if (strpos(strtolower($baseUrl), '/public') !== false) {
-        $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-        
-        // Force consistent case
-        if (strtolower($baseUrl) === '/coops_bichi') {
-            $baseUrl = '/Coops_Bichi';
-        }
-    }
-}
-
-// Additional fallback
-if (empty($baseUrl)) {
-    $requestUrl = $_SERVER['REQUEST_URI'];
-    $lowerRequestUrl = strtolower($requestUrl);
-    if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-        $baseUrl = '/Coops_Bichi';
-    }
-}
-
-// Add /public to the base URL
-$publicUrl = $baseUrl . '/public';
+$publicUrl = \App\Core\Config::getPublicUrl();
 
 // Add this helper method at the beginning of the file, after the first PHP opening tag
 function formatNotificationLink($link, $publicUrl, $id) {
@@ -216,9 +187,9 @@ function formatNotificationLink($link, $publicUrl, $id) {
                             </div>
                         </div>
                     <?php else: ?>
-                        <a href="/Coops_Bichi/public/login" class="text-gray-600 hover:text-primary-600">Member Login</a>
-                        <a href="/Coops_Bichi/public/register" class="text-gray-600 hover:text-primary-600">Register</a>
-                        <a href="/Coops_Bichi/public/admin/login" class="text-gray-600 hover:text-primary-600">Admin Login</a>
+                        <a href="<?= $publicUrl ?>/login" class="text-gray-600 hover:text-primary-600">Member Login</a>
+                        <a href="<?= $publicUrl ?>/register" class="text-gray-600 hover:text-primary-600">Register</a>
+                        <a href="<?= $publicUrl ?>/admin/login" class="text-gray-600 hover:text-primary-600">Admin Login</a>
                     <?php endif; ?>
                 </nav>
                 
@@ -267,9 +238,9 @@ function formatNotificationLink($link, $publicUrl, $id) {
                     <a href="<?= $publicUrl ?>/admin/change-password" class="block py-2 text-gray-600 hover:text-primary-600">Change Password</a>
                     <a href="<?= $publicUrl ?>/logout" class="block py-2 text-gray-600 hover:text-primary-600">Logout</a>
                 <?php else: ?>
-                    <a href="/Coops_Bichi/public/login" class="block py-2 text-gray-600 hover:text-primary-600">Member Login</a>
-                    <a href="/Coops_Bichi/public/register" class="block py-2 text-gray-600 hover:text-primary-600">Register</a>
-                    <a href="/Coops_Bichi/public/admin/login" class="block py-2 text-gray-600 hover:text-primary-600">Admin Login</a>
+                    <a href="<?= $publicUrl ?>/login" class="block py-2 text-gray-600 hover:text-primary-600">Member Login</a>
+                    <a href="<?= $publicUrl ?>/register" class="block py-2 text-gray-600 hover:text-primary-600">Register</a>
+                    <a href="<?= $publicUrl ?>/admin/login" class="block py-2 text-gray-600 hover:text-primary-600">Admin Login</a>
                 <?php endif; ?>
             </div>
         </div>

@@ -80,44 +80,7 @@ class Controller
     protected function redirect(string $url): void
     {
         if (!empty($url) && $url[0] === '/' && strpos($url, '//') !== 0) {
-            // Get base URL for relative paths
-            $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-            $baseUrl = '';
-            
-            // If we're in a subdirectory, extract it properly
-            if ($scriptDir !== '/' && $scriptDir !== '\\') {
-                $baseUrl = $scriptDir;
-                
-                // Make sure Coops_Bichi path has consistent capitalization and includes /public
-                if (strtolower($baseUrl) === '/coops_bichi') {
-                    $baseUrl = '/Coops_Bichi/public';
-                }
-                // Handle XAMPP-specific case where script name might be /Coops_Bichi/public/index.php
-                else if (strpos(strtolower($baseUrl), '/public') !== false) {
-                    $publicPos = strpos(strtolower($baseUrl), '/public');
-                    $basePathPart = substr($baseUrl, 0, $publicPos);
-                    
-                    // Force consistent case
-                    if (strtolower($basePathPart) === '/coops_bichi') {
-                        $basePathPart = '/Coops_Bichi';
-                    }
-                    
-                    $baseUrl = $basePathPart . '/public';
-                }
-            } else {
-                // Default case for localhost
-                if (isset($_SERVER['HTTP_HOST']) && strpos(strtolower($_SERVER['HTTP_HOST']), 'localhost') !== false) {
-                    $baseUrl = '/Coops_Bichi/public';
-                }
-            }
-            
-            // Additional fallback for XAMPP installations
-            if (empty($baseUrl)) {
-                $requestUrl = $_SERVER['REQUEST_URI'];
-                if (strpos(strtolower($requestUrl), '/coops_bichi/') === 0) {
-                    $baseUrl = '/Coops_Bichi/public';
-                }
-            }
+            $baseUrl = \App\Core\Config::getPublicUrl();
             
             // Don't add baseUrl if it's already included in the URL
             if (!empty($baseUrl) && strpos($url, $baseUrl) !== 0) {
@@ -152,34 +115,7 @@ class Controller
         if (!Auth::isAdminLoggedIn()) {
             $this->setFlash('error', 'Please log in to access the admin area');
             
-            // Get base URL for redirects
-            $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-            $baseUrl = '';
-            
-            if ($scriptDir !== '/' && $scriptDir !== '\\') {
-                $baseUrl = $scriptDir;
-                
-                // Handle XAMPP-specific case
-                if (strpos(strtolower($baseUrl), '/public') !== false) {
-                    $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-                    
-                    // Force consistent case
-                    if (strtolower($baseUrl) === '/coops_bichi') {
-                        $baseUrl = '/Coops_Bichi';
-                    }
-                }
-            }
-            
-            // Additional fallback
-            if (empty($baseUrl)) {
-                $requestUrl = $_SERVER['REQUEST_URI'];
-                $lowerRequestUrl = strtolower($requestUrl);
-                if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                    $baseUrl = '/Coops_Bichi';
-                }
-            }
-            
-            $publicUrl = $baseUrl . '/public';
+            $publicUrl = \App\Core\Config::getPublicUrl();
             header('Location: ' . $publicUrl . '/admin/login');
             exit;
         }
@@ -211,34 +147,7 @@ class Controller
         if (!Auth::isMemberLoggedIn()) {
             $this->setFlash('error', 'Please log in to access the member area');
             
-            // Get base URL for redirects
-            $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
-            $baseUrl = '';
-            
-            if ($scriptDir !== '/' && $scriptDir !== '\\') {
-                $baseUrl = $scriptDir;
-                
-                // Handle XAMPP-specific case
-                if (strpos(strtolower($baseUrl), '/public') !== false) {
-                    $baseUrl = substr($baseUrl, 0, strpos(strtolower($baseUrl), '/public'));
-                    
-                    // Force consistent case
-                    if (strtolower($baseUrl) === '/coops_bichi') {
-                        $baseUrl = '/Coops_Bichi';
-                    }
-                }
-            }
-            
-            // Additional fallback
-            if (empty($baseUrl)) {
-                $requestUrl = $_SERVER['REQUEST_URI'];
-                $lowerRequestUrl = strtolower($requestUrl);
-                if (strpos($lowerRequestUrl, '/coops_bichi/') === 0) {
-                    $baseUrl = '/Coops_Bichi';
-                }
-            }
-            
-            $publicUrl = $baseUrl . '/public';
+            $publicUrl = \App\Core\Config::getPublicUrl();
             header('Location: ' . $publicUrl . '/login');
             exit;
         }

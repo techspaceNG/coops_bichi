@@ -7,13 +7,13 @@
             <p class="text-gray-600 text-sm mt-1">Welcome back, <?php echo isset($admin['name']) ? htmlspecialchars($admin['name']) : 'Admin'; ?></p>
         </div>
         <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
-            <a href="/Coops_Bichi/public/admin/loans/applications" class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
+            <a href="<?= $publicUrl ?>/admin/loans/applications" class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                 </svg>
                 View Applications
             </a>
-            <a href="/Coops_Bichi/public/admin/reports" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
+            <a href="<?= $publicUrl ?>/admin/reports" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
@@ -51,7 +51,7 @@
                 </div>
             <?php endif; ?>
             <div class="mt-3">
-                <a href="/Coops_Bichi/public/admin/members" class="text-blue-600 text-sm hover:text-blue-800">View all members →</a>
+                <a href="<?= $publicUrl ?>/admin/members" class="text-blue-600 text-sm hover:text-blue-800">View all members →</a>
             </div>
         </div>
         
@@ -82,7 +82,7 @@
                 </div>
             <?php endif; ?>
             <div class="mt-3">
-                <a href="/Coops_Bichi/public/admin/savings" class="text-blue-600 text-sm hover:text-blue-800">View all savings →</a>
+                <a href="<?= $publicUrl ?>/admin/savings" class="text-blue-600 text-sm hover:text-blue-800">View all savings →</a>
             </div>
         </div>
 
@@ -113,7 +113,7 @@
                 </div>
             <?php endif; ?>
             <div class="mt-3">
-                <a href="/Coops_Bichi/public/admin/shares" class="text-blue-600 text-sm hover:text-blue-800">View all shares →</a>
+                <a href="<?= $publicUrl ?>/admin/shares" class="text-blue-600 text-sm hover:text-blue-800">View all shares →</a>
             </div>
         </div>
         
@@ -137,7 +137,7 @@
                 </div>
             </div>
             <div class="mt-3">
-                <a href="/Coops_Bichi/public/admin/loans" class="text-blue-600 text-sm hover:text-blue-800">View all loans →</a>
+                <a href="<?= $publicUrl ?>/admin/loans" class="text-blue-600 text-sm hover:text-blue-800">View all loans →</a>
             </div>
         </div>
 
@@ -161,7 +161,7 @@
                 </div>
             </div>
             <div class="mt-3">
-                <a href="/Coops_Bichi/public/admin/household" class="text-blue-600 text-sm hover:text-blue-800">View all purchases →</a>
+                <a href="<?= $publicUrl ?>/admin/household" class="text-blue-600 text-sm hover:text-blue-800">View all purchases →</a>
             </div>
         </div>
     </div>
@@ -275,7 +275,7 @@
                         <option value="saving">Savings</option>
                         <option value="household">Household</option>
                     </select>
-                    <a href="/Coops_Bichi/public/admin/audit-logs" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <a href="<?= $publicUrl ?>/admin/audit-logs" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
                         View All
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -341,7 +341,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <h4 class="text-md font-medium text-gray-700">Loan Applications (<?php echo count($pendingLoans); ?>)</h4>
                         <?php if (!empty($pendingLoans)): ?>
-                            <a href="/Coops_Bichi/public/admin/loans/applications" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                            <a href="<?= $publicUrl ?>/admin/loans/applications" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
                                 View All
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -374,7 +374,7 @@
                                         <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-900 font-medium">₦<?php echo number_format($loan['loan_amount'], 2); ?></td>
                                         <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><?php echo date('M j, Y', strtotime($loan['application_date'])); ?></td>
                                         <td class="px-4 py-2 whitespace-nowrap text-sm">
-                                            <a href="/Coops_Bichi/public/admin/loans/view/<?php echo $loan['id']; ?>" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                            <a href="<?= $publicUrl ?>/admin/loans/view/<?php echo $loan['id']; ?>" class="text-blue-600 hover:text-blue-800 flex items-center">
                                                 View
                                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -395,7 +395,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <h4 class="text-md font-medium text-gray-700">Household Purchase Applications (<?php echo count($pendingPurchases); ?>)</h4>
                         <?php if (!empty($pendingPurchases)): ?>
-                            <a href="/Coops_Bichi/public/admin/household/applications" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                            <a href="<?= $publicUrl ?>/admin/household/applications" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
                                 View All
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -428,7 +428,7 @@
                                         <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-900 font-medium">₦<?php echo number_format($purchase['purchase_amount'], 2); ?></td>
                                         <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><?php echo date('M j, Y', strtotime($purchase['application_date'])); ?></td>
                                         <td class="px-4 py-2 whitespace-nowrap text-sm">
-                                            <a href="/Coops_Bichi/public/admin/household/view/<?php echo $purchase['id']; ?>" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                            <a href="<?= $publicUrl ?>/admin/household/view/<?php echo $purchase['id']; ?>" class="text-blue-600 hover:text-blue-800 flex items-center">
                                                 View
                                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>

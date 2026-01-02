@@ -532,7 +532,8 @@ final class Member
                 SELECT 
                     savings_balance,
                     loan_balance,
-                    household_balance
+                    household_balance,
+                    shares_balance
                 FROM members
                 WHERE id = :id
             ");
@@ -545,21 +546,24 @@ final class Member
                 return [
                     'savings_balance' => (float)$data['savings_balance'],
                     'loan_balance' => (float)$data['loan_balance'],
-                    'household_balance' => (float)$data['household_balance']
+                    'household_balance' => (float)$data['household_balance'],
+                    'shares_balance' => (float)($data['shares_balance'] ?? 0.0)
                 ];
             }
             
             return [
                 'savings_balance' => 0.0,
                 'loan_balance' => 0.0,
-                'household_balance' => 0.0
+                'household_balance' => 0.0,
+                'shares_balance' => 0.0
             ];
         } catch (\PDOException $e) {
             error_log('Error getting financial summary: ' . $e->getMessage());
             return [
                 'savings_balance' => 0.0,
                 'loan_balance' => 0.0,
-                'household_balance' => 0.0
+                'household_balance' => 0.0,
+                'shares_balance' => 0.0
             ];
         }
     }

@@ -52,6 +52,7 @@ final class MemberController
         $member->savings_balance = $financialSummary['savings_balance'] ?? 0.0;
         $member->loan_balance = $financialSummary['loan_balance'] ?? 0.0;
         $member->household_balance = $financialSummary['household_balance'] ?? 0.0;
+        $member->shares_balance = $financialSummary['shares_balance'] ?? 0.0;
         
         // Get recent transactions - limit to 5 most recent
         $recent_transactions = $this->getRecentTransactions($member_id, 5);

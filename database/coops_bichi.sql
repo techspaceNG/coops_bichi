@@ -2140,7 +2140,7 @@ CREATE TABLE `shares` (
   `quantity` int(10) UNSIGNED GENERATED ALWAYS AS (`units`) STORED,
   `unit_price` decimal(10,2) GENERATED ALWAYS AS (`unit_value`) STORED,
   `total_value` decimal(10,2) GENERATED ALWAYS AS (`units` * `unit_value`) STORED,
-  `purchase_date` date DEFAULT curdate(),
+  `purchase_date` date DEFAULT (curdate()),
   `status` enum('active','sold','forfeited') DEFAULT 'active',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -2176,7 +2176,7 @@ CREATE TABLE `share_transactions` (
   `total_amount` decimal(10,2) NOT NULL,
   `processed_by` int(11) DEFAULT NULL,
   `notes` text DEFAULT NULL,
-  `transaction_date` date DEFAULT curdate(),
+  `transaction_date` date DEFAULT (curdate()),
   `description` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()

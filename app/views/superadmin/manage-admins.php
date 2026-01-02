@@ -5,119 +5,164 @@ $current_page = 'manage_admins';
 $page_title = 'Manage Administrators';
 ?>
 
-<!-- Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Manage Administrators</h1>
-    <a href="<?= url('/superadmin/create-admin') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-plus fa-sm text-white-50"></i> Create New Admin
-    </a>
-</div>
-
-<!-- Alerts -->
-<?php include BASE_DIR . '/app/views/layouts/alerts.php'; ?>
-
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-users-cog fa-fw"></i> Administrator Accounts</h6>
+<div class="container-fluid p-0">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h4 class="fw-bold mb-0">Manage Administrators</h4>
+            <p class="text-muted small mb-0">Manage system users and their access roles</p>
+        </div>
+        <div class="col-auto">
+            <a href="<?= url('/superadmin/create-admin') ?>" class="btn btn-primary d-flex align-items-center gap-2">
+                <i class="fas fa-plus"></i> 
+                <span>Create New Admin</span>
+            </a>
+        </div>
     </div>
-    <div class="card-body">
-        <!-- Filter Form -->
-        <form action="<?= url('/superadmin/manage-admins') ?>" method="GET" class="row mb-3">
-            <div class="col-md-3 mb-2">
-                <select name="role" class="form-control form-control-sm">
-                    <option value="">All Roles</option>
-                    <option value="admin" <?php echo isset($_GET['role']) && $_GET['role'] === 'admin' ? 'selected' : ''; ?>>Administrator</option>
-                    <option value="superadmin" <?php echo isset($_GET['role']) && $_GET['role'] === 'superadmin' ? 'selected' : ''; ?>>Superadministrator</option>
-                </select>
-            </div>
-            <div class="col-md-3 mb-2">
-                <select name="status" class="form-control form-control-sm">
-                    <option value="">All Statuses</option>
-                    <option value="active" <?php echo isset($_GET['status']) && $_GET['status'] === 'active' ? 'selected' : ''; ?>>Active</option>
-                    <option value="locked" <?php echo isset($_GET['status']) && $_GET['status'] === 'locked' ? 'selected' : ''; ?>>Locked</option>
-                </select>
-            </div>
-            <div class="col-md-4 mb-2">
-                <div class="input-group input-group-sm">
-                    <input type="text" name="search" class="form-control" placeholder="Search admins..." value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
+
+    <!-- Stats Summary (Optional but cool) -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-2">
+                        <i class="fas fa-users-cog fa-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small">Total Admins</div>
+                        <div class="h5 fw-bold mb-0"><?= count($admins) ?></div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 mb-2 text-right">
-                <a href="<?= url('/superadmin/manage-admins') ?>" class="btn btn-sm btn-outline-secondary">
-                    <i class="fas fa-redo"></i> Reset
-                </a>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm overflow-hidden">
+        <div class="card-header bg-white border-bottom py-3">
+            <div class="row align-items-center g-2">
+                <div class="col">
+                     <h6 class="fw-bold mb-0">Administrator Accounts</h6>
+                </div>
+                <div class="col-auto">
+                    <!-- Filter Toggle/Collapse if needed, but simple is better here -->
+                    <form action="<?= url('/superadmin/manage-admins') ?>" method="GET" class="row g-2">
+                        <div class="col-auto">
+                            <select name="role" class="form-select form-select-sm border-light bg-light" onchange="this.form.submit()">
+                                <option value="">All Roles</option>
+                                <option value="admin" <?= (isset($_GET['role']) && $_GET['role'] === 'admin') ? 'selected' : '' ?>>Admin</option>
+                                <option value="superadmin" <?= (isset($_GET['role']) && $_GET['role'] === 'superadmin') ? 'selected' : '' ?>>Superadmin</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <select name="status" class="form-select form-select-sm border-light bg-light" onchange="this.form.submit()">
+                                <option value="">All Statuses</option>
+                                <option value="active" <?= (isset($_GET['status']) && $_GET['status'] === 'active') ? 'selected' : '' ?>>Active</option>
+                                <option value="locked" <?= (isset($_GET['status']) && $_GET['status'] === 'locked') ? 'selected' : '' ?>>Locked</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="search" class="form-control border-light bg-light" placeholder="Search..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+                                <button class="btn btn-light border-light" type="submit">
+                                    <i class="fas fa-search text-muted"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <a href="<?= url('/superadmin/manage-admins') ?>" class="btn btn-sm btn-light border-light" title="Reset">
+                                <i class="fas fa-redo-alt text-muted"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
         
-        <!-- Admins Table -->
         <div class="table-responsive">
-            <table class="table table-bordered" width="100%" cellspacing="0">
-                <thead>
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light text-muted small text-uppercase">
                     <tr>
-                        <th width="5%">ID</th>
-                        <th width="15%">Username</th>
-                        <th width="20%">Name</th>
-                        <th width="20%">Email</th>
-                        <th width="10%">Role</th>
-                        <th width="10%">Status</th>
-                        <th width="20%">Actions</th>
+                        <th class="ps-4" width="5%">ID</th>
+                        <th width="35%">Administrator</th>
+                        <th width="15%">Role</th>
+                        <th width="15%">Status</th>
+                        <th class="text-end pe-4" width="30%">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (empty($admins)): ?>
                         <tr>
-                            <td colspan="7" class="text-center">No administrators found</td>
+                            <td colspan="5" class="text-center py-5">
+                                <div class="text-muted">
+                                    <i class="fas fa-user-slash fa-3x mb-3 opacity-25"></i>
+                                    <p>No administrators found matching your criteria</p>
+                                </div>
+                            </td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($admins as $admin): ?>
                             <tr>
-                                <td><?php echo $admin['id']; ?></td>
-                                <td><?php echo htmlspecialchars($admin['username']); ?></td>
-                                <td><?php echo htmlspecialchars($admin['name']); ?></td>
-                                <td><?php echo htmlspecialchars($admin['email']); ?></td>
+                                <td class="ps-4">
+                                    <span class="text-muted small">#<?= $admin['id'] ?></span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-user text-secondary"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold mb-0"><?= htmlspecialchars($admin['name']) ?></div>
+                                            <div class="text-muted small"><?= htmlspecialchars($admin['email']) ?> | @<?= htmlspecialchars($admin['username']) ?></div>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>
                                     <?php if ($admin['role'] === 'superadmin'): ?>
-                                        <span class="badge badge-warning">Superadmin</span>
+                                        <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3">Superadmin</span>
                                     <?php else: ?>
-                                        <span class="badge badge-primary">Admin</span>
+                                        <span class="badge bg-info bg-opacity-10 text-info rounded-pill px-3">Administrator</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
                                     <?php if ((int)$admin['is_locked'] === 1): ?>
-                                        <span class="badge badge-danger">Locked</span>
+                                        <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3">
+                                            <i class="fas fa-lock me-1"></i> Locked
+                                        </span>
                                     <?php else: ?>
-                                        <span class="badge badge-success">Active</span>
+                                        <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3">
+                                            <i class="fas fa-check-circle me-1"></i> Active
+                                        </span>
                                     <?php endif; ?>
                                 </td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a href="<?= url('/superadmin/edit-admin/' . $admin['id']) ?>" class="btn btn-outline-primary" title="Edit">
+                                <td class="text-end pe-4">
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <a href="<?= url('/superadmin/edit-admin/' . $admin['id']) ?>" class="btn btn-sm btn-outline-light border text-primary" title="Edit Admin">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="<?= url('/superadmin/reset-password/' . $admin['id']) ?>" class="btn btn-outline-warning" title="Reset Password">
+                                        <a href="<?= url('/superadmin/reset-password/' . $admin['id']) ?>" class="btn btn-sm btn-outline-light border text-warning" title="Reset Password">
                                             <i class="fas fa-key"></i>
                                         </a>
                                         
                                         <?php if ((int)$admin['is_locked'] === 1): ?>
-                                            <a href="<?= url('/superadmin/toggle-lock/' . $admin['id']) ?>" class="btn btn-outline-success" 
-                                               title="Unlock Account" onclick="return confirm('Are you sure you want to unlock this account?')">
+                                            <a href="<?= url('/superadmin/toggle-lock/' . $admin['id']) ?>" 
+                                               class="btn btn-sm btn-outline-light border text-success" 
+                                               title="Unlock Account" 
+                                               onclick="return confirm('Are you sure you want to unlock this account?')">
                                                 <i class="fas fa-unlock"></i>
                                             </a>
                                         <?php else: ?>
-                                            <a href="<?= url('/superadmin/toggle-lock/' . $admin['id']) ?>" class="btn btn-outline-danger" 
-                                               title="Lock Account" onclick="return confirm('Are you sure you want to lock this account?')">
+                                            <a href="<?= url('/superadmin/toggle-lock/' . $admin['id']) ?>" 
+                                               class="btn btn-sm btn-outline-light border text-danger" 
+                                               title="Lock Account" 
+                                               onclick="return confirm('Are you sure you want to lock this account?')">
                                                 <i class="fas fa-lock"></i>
                                             </a>
                                         <?php endif; ?>
                                         
                                         <?php if (isset($_SESSION['admin_id']) && $admin['id'] !== $_SESSION['admin_id']): ?>
-                                            <a href="<?= url('/superadmin/delete-admin/' . $admin['id']) ?>" class="btn btn-outline-danger" 
-                                               title="Delete" onclick="return confirm('Are you sure you want to delete this administrator account? This action cannot be undone.')">
+                                            <a href="<?= url('/superadmin/delete-admin/' . $admin['id']) ?>" 
+                                               class="btn btn-sm btn-outline-light border text-danger" 
+                                               title="Delete Admin" 
+                                               onclick="return confirm('Are you sure you want to delete this administrator account? This action cannot be undone.')">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         <?php endif; ?>
@@ -129,23 +174,24 @@ $page_title = 'Manage Administrators';
                 </tbody>
             </table>
         </div>
-        
-        <!-- Pagination -->
+
         <?php if (!empty($pagination) && isset($pagination['last_page']) && $pagination['last_page'] > 1): ?>
+        <div class="card-footer bg-white border-top py-3">
             <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
+                <ul class="pagination pagination-sm justify-content-center mb-0">
                     <?php for ($i = 1; $i <= $pagination['last_page']; $i++): ?>
-                        <li class="page-item <?php echo isset($pagination['current_page']) && $pagination['current_page'] == $i ? 'active' : ''; ?>">
-                            <a class="page-link" href="<?= url('/superadmin/manage-admins?page=' . $i . 
+                        <li class="page-item <?= (isset($pagination['current_page']) && $pagination['current_page'] == $i) ? 'active' : '' ?>">
+                            <a class="page-link shadow-none" href="<?= url('/superadmin/manage-admins?page=' . $i . 
                                (isset($_GET['role']) ? '&role=' . $_GET['role'] : '') . 
                                (isset($_GET['status']) ? '&status=' . $_GET['status'] : '') . 
                                (isset($_GET['search']) ? '&search=' . $_GET['search'] : '')) ?>">
-                                <?php echo $i; ?>
+                                <?= $i ?>
                             </a>
                         </li>
                     <?php endfor; ?>
                 </ul>
             </nav>
+        </div>
         <?php endif; ?>
     </div>
 </div> 

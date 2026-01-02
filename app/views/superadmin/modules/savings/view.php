@@ -1,242 +1,243 @@
 <?php /* This file is included by the renderSuperAdmin method */ ?>
 
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Member Savings Details</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="<?php echo url('/superadmin/dashboard'); ?>">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="<?php echo url('/superadmin/savings'); ?>">Savings Management</a></li>
-        <li class="breadcrumb-item active">View Details</li>
-    </ol>
-    
+<div class="container-fluid p-0">
+    <!-- Header & Navigation -->
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h4 class="fw-bold mb-0">Savings Portfolio Analysis</h4>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mt-2 mb-0" style="background: transparent; padding: 0;">
+                    <li class="breadcrumb-item small"><a href="<?= url('/superadmin/dashboard') ?>" class="text-decoration-none text-muted">Dashboard</a></li>
+                    <li class="breadcrumb-item small"><a href="<?= url('/superadmin/savings') ?>" class="text-decoration-none text-muted">Savings Management</a></li>
+                    <li class="breadcrumb-item active small" aria-current="page">Entity Audit</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-auto">
+            <div class="d-flex gap-2">
+                <a href="<?= url('/superadmin/savings') ?>" class="btn btn-outline-secondary d-flex align-items-center gap-2">
+                    <i class="fas fa-arrow-left"></i>
+                    <span class="d-none d-sm-inline">Portfolio Home</span>
+                </a>
+                <a href="<?= url('/superadmin/savings/edit/' . $member['id']) ?>" class="btn btn-primary shadow-sm d-flex align-items-center gap-2">
+                    <i class="fas fa-edit"></i>
+                    <span>Modify Strategy</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <?php include VIEWS_PATH . '/layouts/alerts.php'; ?>
-    
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div>
-                        <i class="fas fa-user me-1"></i>
-                        Member Information
+
+    <div class="row g-4">
+        <!-- Entity Profile & Financial Summary -->
+        <div class="col-xl-4">
+            <div class="card border-0 shadow-sm mb-4 overflow-hidden">
+                <div class="bg-primary py-4 px-4 text-white position-relative">
+                    <div class="d-flex align-items-center gap-3 position-relative" style="z-index: 2;">
+                        <div class="bg-white bg-opacity-20 rounded-circle p-1">
+                            <div class="rounded-circle bg-white d-flex align-items-center justify-content-center fw-bold text-primary shadow-sm" style="width: 60px; height: 60px; font-size: 1.2rem;">
+                                <?= strtoupper(substr($member['name'], 0, 2)) ?>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-0"><?= htmlspecialchars($member['name']) ?></h5>
+                            <div class="small opacity-75 font-monospace">REG. #<?= htmlspecialchars($member['coop_no']) ?></div>
+                        </div>
                     </div>
-                    <div>
-                        <a href="<?php echo url('/superadmin/savings/edit/' . $member['id']); ?>" class="btn btn-primary btn-sm">
-                            <i class="fas fa-edit me-1"></i> Edit Monthly Deduction
-                        </a>
-                        <a href="<?php echo url('/superadmin/savings/add'); ?>?member_id=<?php echo $member['id']; ?>" class="btn btn-success btn-sm">
-                            <i class="fas fa-plus-circle me-1"></i> Add Deduction
+                </div>
+                <div class="card-body p-4">
+                    <div class="d-grid gap-3">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                            <span class="small fw-bold text-muted text-uppercase">Division</span>
+                            <span class="badge bg-light text-dark fw-normal border"><?= htmlspecialchars($member['department_name'] ?? 'General') ?></span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                            <span class="small fw-bold text-muted text-uppercase">Monthly Commitment</span>
+                            <span class="fw-bold text-primary">₦<?= number_format($savings['monthly_deduction'] ?? 0, 2) ?></span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="small fw-bold text-muted text-uppercase">Portfolio Lifespan</span>
+                            <span class="small"><?= isset($savings['last_deduction_date']) && $savings['last_deduction_date'] ? date('M d, Y', strtotime($savings['last_deduction_date'])) : 'Launch Phase' ?></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-top">
+                        <a href="<?= url('/superadmin/view-member/' . $member['id']) ?>" class="btn btn-light w-100 btn-sm text-primary fw-bold">
+                            <i class="fas fa-fingerprint me-2"></i> View Unified Profile
                         </a>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <table class="table table-borderless">
-                                <tr>
-                                    <th width="30%">Full Name:</th>
-                                    <td><?php echo htmlspecialchars($member['name']); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>COOPS No.:</th>
-                                    <td><?php echo htmlspecialchars($member['coop_no']); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Department:</th>
-                                    <td><?php echo htmlspecialchars($member['department_name'] ?? 'N/A'); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Email:</th>
-                                    <td><?php echo htmlspecialchars($member['email']); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Phone:</th>
-                                    <td><?php echo htmlspecialchars($member['phone']); ?></td>
-                                </tr>
-                            </table>
+            </div>
+
+            <!-- Kinetic Indicators -->
+            <div class="card border-0 shadow-sm overflow-hidden bg-dark text-white">
+                <div class="card-body p-4">
+                    <div class="mb-4 d-flex align-items-center gap-3">
+                        <div class="bg-white bg-opacity-10 p-2 rounded-3 text-white">
+                            <i class="fas fa-wallet"></i>
                         </div>
-                        <div class="col-md-6">
-                            <table class="table table-borderless">
-                                <tr>
-                                    <th width="40%">Monthly Deduction:</th>
-                                    <td>₦<?php echo number_format($savings['monthly_deduction'] ?? 0, 2); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Cumulative Savings:</th>
-                                    <td>₦<?php echo number_format($savings['cumulative_amount'] ?? 0, 2); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Total Deposits:</th>
-                                    <td>₦<?php echo number_format($statistics['total_deposits'] ?? 0, 2); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Total Withdrawals:</th>
-                                    <td>₦<?php echo number_format($statistics['total_withdrawals'] ?? 0, 2); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Current Balance:</th>
-                                    <td>₦<?php echo number_format($statistics['current_balance'] ?? 0, 2); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Last Deduction Date:</th>
-                                    <td><?php echo isset($savings['last_deduction_date']) && $savings['last_deduction_date'] ? date('M d, Y', strtotime($savings['last_deduction_date'])) : 'N/A'; ?></td>
-                                </tr>
-                            </table>
+                        <h6 class="fw-bold mb-0">Capital Distribution</h6>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-white-50 small">Aggregate Balance</span>
+                            <span class="fw-bold">₦<?= number_format($statistics['current_balance'] ?? 0, 2) ?></span>
+                        </div>
+                        <div class="progress bg-white bg-opacity-10" style="height: 6px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="p-3 rounded-3 bg-white bg-opacity-5">
+                                <div class="text-white-50 small text-uppercase fw-bold mb-1" style="font-size: 0.6rem;">Agg. Inflow</div>
+                                <div class="fw-bold text-success">₦<?= number_format($statistics['total_deposits'] ?? 0, 2) ?></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 rounded-3 bg-white bg-opacity-5">
+                                <div class="text-white-50 small text-uppercase fw-bold mb-1" style="font-size: 0.6rem;">Agg. Outflow</div>
+                                <div class="fw-bold text-danger">₦<?= number_format($statistics['total_withdrawals'] ?? 0, 2) ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-history me-1"></i>
-                    Transaction History
-                </div>
-                <div class="card-body">
-                    <ul class="nav nav-tabs" id="transactionTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="all-transactions-tab" data-bs-toggle="tab" data-bs-target="#all-transactions" type="button" role="tab" aria-controls="all-transactions" aria-selected="true">
-                                All Transactions (<?php echo count($transactions); ?>)
+
+        <!-- Ledger Archives -->
+        <div class="col-xl-8">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-bottom p-0">
+                    <ul class="nav nav-tabs border-bottom-0" id="transactionTabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active py-3 px-4 border-bottom border-top-0 border-start-0 border-end-0 fw-bold small text-uppercase" id="all-transactions-tab" data-bs-toggle="tab" data-bs-target="#all-transactions" type="button" role="tab">
+                                <i class="fas fa-exchange-alt me-2"></i> Unified Ledger
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="deposits-tab" data-bs-toggle="tab" data-bs-target="#deposits" type="button" role="tab" aria-controls="deposits" aria-selected="false">
-                                Deposits (<?php echo count($deductions); ?>)
+                        <li class="nav-item">
+                            <button class="nav-link py-3 px-4 border-bottom border-top-0 border-start-0 border-end-0 fw-bold small text-uppercase" id="deposits-tab" data-bs-toggle="tab" data-bs-target="#deposits" type="button" role="tab">
+                                <i class="fas fa-arrow-down me-2 text-success"></i> Inflows
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="withdrawals-tab" data-bs-toggle="tab" data-bs-target="#withdrawals" type="button" role="tab" aria-controls="withdrawals" aria-selected="false">
-                                Withdrawals (<?php echo count($withdrawals); ?>)
+                        <li class="nav-item">
+                            <button class="nav-link py-3 px-4 border-bottom border-top-0 border-start-0 border-end-0 fw-bold small text-uppercase" id="withdrawals-tab" data-bs-toggle="tab" data-bs-target="#withdrawals" type="button" role="tab">
+                                <i class="fas fa-arrow-up me-2 text-danger"></i> Outflows
                             </button>
                         </li>
                     </ul>
-                    <div class="tab-content mt-3" id="transactionTabsContent">
-                        <div class="tab-pane fade show active" id="all-transactions" role="tabpanel" aria-labelledby="all-transactions-tab">
-                            <?php if (empty($transactions)): ?>
-                                <div class="alert alert-info">
-                                    <i class="fas fa-info-circle me-1"></i>
-                                    No transactions found for this member.
-                                </div>
-                            <?php else: ?>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <thead>
+                </div>
+                <div class="card-body p-0">
+                    <div class="tab-content" id="transactionTabsContent">
+                        <!-- All Transactions -->
+                        <div class="tab-pane fade show active" id="all-transactions" role="tabpanel">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0 datatable-lite">
+                                    <thead class="bg-light">
+                                        <tr class="small text-uppercase fw-bold text-muted" style="font-size: 0.7rem;">
+                                            <th class="ps-4">Temporal Mark</th>
+                                            <th>Transaction ID/Type</th>
+                                            <th>Volume (₦)</th>
+                                            <th>Context/Description</th>
+                                            <th class="pe-4 text-end">Audit Ref</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border-top-0">
+                                        <?php if (empty($transactions)): ?>
                                             <tr>
-                                                <th>Date</th>
-                                                <th>Type</th>
-                                                <th>Amount (₦)</th>
-                                                <th>Description</th>
-                                                <th>Processed By</th>
+                                                <td colspan="5" class="text-center py-5 text-muted small">No transactions detected in this ledger segment.</td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                        <?php else: ?>
                                             <?php foreach ($transactions as $transaction): ?>
                                                 <tr>
-                                                    <td><?php echo date('M d, Y', strtotime($transaction['created_at'])); ?></td>
-                                                    <td>
-                                                        <?php if ($transaction['transaction_type'] === 'deposit'): ?>
-                                                            <span class="badge bg-success">Deposit</span>
-                                                        <?php elseif ($transaction['transaction_type'] === 'withdrawal'): ?>
-                                                            <span class="badge bg-danger">Withdrawal</span>
-                                                        <?php elseif ($transaction['transaction_type'] === 'interest'): ?>
-                                                            <span class="badge bg-primary">Interest</span>
-                                                        <?php else: ?>
-                                                            <span class="badge bg-secondary">Adjustment</span>
-                                                        <?php endif; ?>
+                                                    <td class="ps-4">
+                                                        <div class="fw-bold small"><?= date('M d, Y', strtotime($transaction['created_at'])) ?></div>
+                                                        <div class="text-muted" style="font-size: 0.6rem;"><?= date('h:i A', strtotime($transaction['created_at'])) ?></div>
                                                     </td>
-                                                    <td><?php echo number_format($transaction['amount'], 2); ?></td>
-                                                    <td><?php echo htmlspecialchars($transaction['description'] ?? 'N/A'); ?></td>
-                                                    <td><?php echo htmlspecialchars($transaction['admin_name'] ?? 'System'); ?></td>
+                                                    <td>
+                                                        <?php 
+                                                        $typeClass = 'bg-secondary';
+                                                        $typeIcon = 'fa-dot-circle';
+                                                        switch($transaction['transaction_type']) {
+                                                            case 'deposit': $typeClass = 'bg-success text-success'; $typeIcon = 'fa-arrow-down'; break;
+                                                            case 'withdrawal': $typeClass = 'bg-danger text-danger'; $typeIcon = 'fa-arrow-up'; break;
+                                                            case 'interest': $typeClass = 'bg-primary text-primary'; $typeIcon = 'fa-percentage'; break;
+                                                        }
+                                                        ?>
+                                                        <span class="badge <?= $typeClass ?> bg-opacity-10 border border-<?= explode(' ', $typeClass)[1] ?> border-opacity-10 rounded-pill px-3 py-1" style="font-size: 0.65rem;">
+                                                            <i class="fas <?= $typeIcon ?> me-1" style="font-size: 0.5rem;"></i> <?= strtoupper($transaction['transaction_type']) ?>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="fw-bold small <?= $transaction['transaction_type'] === 'withdrawal' ? 'text-danger' : 'text-success' ?>">
+                                                            <?= $transaction['transaction_type'] === 'withdrawal' ? '-' : '+' ?>₦<?= number_format($transaction['amount'], 2) ?>
+                                                        </div>
+                                                    </td>
+                                                    <td><div class="small text-truncate" style="max-width: 200px;" title="<?= htmlspecialchars($transaction['description'] ?? 'System Processed') ?>"><?= htmlspecialchars($transaction['description'] ?? 'System Processed') ?></div></td>
+                                                    <td class="pe-4 text-end"><span class="small font-monospace text-muted opacity-50"><?= htmlspecialchars($transaction['admin_name'] ?? 'CORE-SYS') ?></span></td>
                                                 </tr>
                                             <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="tab-pane fade" id="deposits" role="tabpanel" aria-labelledby="deposits-tab">
-                            <?php if (empty($deductions)): ?>
-                                <div class="alert alert-info">
-                                    <i class="fas fa-info-circle me-1"></i>
-                                    No deposits found for this member.
-                                </div>
-                            <?php else: ?>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <thead>
+
+                        <!-- Inflows Only -->
+                        <div class="tab-pane fade" id="deposits" role="tabpanel">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0 datatable-lite">
+                                    <thead class="bg-light">
+                                        <tr class="small text-uppercase fw-bold text-muted" style="font-size: 0.7rem;">
+                                            <th class="ps-4">Date</th>
+                                            <th>Amount (₦)</th>
+                                            <th>Provenance</th>
+                                            <th class="pe-4 text-end">Registrar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border-top-0">
+                                        <?php foreach ($deductions as $deduction): ?>
                                             <tr>
-                                                <th>Date</th>
-                                                <th>Amount (₦)</th>
-                                                <th>Description</th>
-                                                <th>Processed By</th>
+                                                <td class="ps-4 small fw-bold"><?= date('M d, Y', strtotime($deduction['created_at'])) ?></td>
+                                                <td class="fw-bold text-success">₦<?= number_format($deduction['amount'], 2) ?></td>
+                                                <td class="small"><?= htmlspecialchars($deduction['description'] ?? 'Monthly Contribution') ?></td>
+                                                <td class="pe-4 text-end small font-monospace opacity-50"><?= htmlspecialchars($deduction['admin_name'] ?? 'CORE-SYS') ?></td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($deductions as $deduction): ?>
-                                                <tr>
-                                                    <td><?php echo date('M d, Y', strtotime($deduction['created_at'])); ?></td>
-                                                    <td><?php echo number_format($deduction['amount'], 2); ?></td>
-                                                    <td><?php echo htmlspecialchars($deduction['description'] ?? 'Monthly Deduction'); ?></td>
-                                                    <td><?php echo htmlspecialchars($deduction['admin_name'] ?? 'System'); ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="tab-pane fade" id="withdrawals" role="tabpanel" aria-labelledby="withdrawals-tab">
-                            <?php if (empty($withdrawals)): ?>
-                                <div class="alert alert-info">
-                                    <i class="fas fa-info-circle me-1"></i>
-                                    No withdrawals found for this member.
-                                </div>
-                            <?php else: ?>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <thead>
+
+                        <!-- Outflows Only -->
+                        <div class="tab-pane fade" id="withdrawals" role="tabpanel">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0 datatable-lite">
+                                    <thead class="bg-light">
+                                        <tr class="small text-uppercase fw-bold text-muted" style="font-size: 0.7rem;">
+                                            <th class="ps-4">Date</th>
+                                            <th>Amount (₦)</th>
+                                            <th>Reasoning</th>
+                                            <th class="pe-4 text-end">Registrar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border-top-0">
+                                        <?php foreach ($withdrawals as $withdrawal): ?>
                                             <tr>
-                                                <th>Date</th>
-                                                <th>Amount (₦)</th>
-                                                <th>Description</th>
-                                                <th>Processed By</th>
+                                                <td class="ps-4 small fw-bold"><?= date('M d, Y', strtotime($withdrawal['created_at'])) ?></td>
+                                                <td class="fw-bold text-danger">₦<?= number_format($withdrawal['amount'], 2) ?></td>
+                                                <td class="small"><?= htmlspecialchars($withdrawal['description'] ?? 'Withdrawal') ?></td>
+                                                <td class="pe-4 text-end small font-monospace opacity-50"><?= htmlspecialchars($withdrawal['admin_name'] ?? 'CORE-SYS') ?></td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($withdrawals as $withdrawal): ?>
-                                                <tr>
-                                                    <td><?php echo date('M d, Y', strtotime($withdrawal['created_at'])); ?></td>
-                                                    <td><?php echo number_format($withdrawal['amount'], 2); ?></td>
-                                                    <td><?php echo htmlspecialchars($withdrawal['description'] ?? 'Withdrawal'); ?></td>
-                                                    <td><?php echo htmlspecialchars($withdrawal['admin_name'] ?? 'System'); ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-12 mb-4">
-            <div class="d-flex justify-content-between">
-                <a href="<?php echo url('/superadmin/savings'); ?>" class="btn btn-outline-secondary">
-                    <i class="fas fa-arrow-left me-1"></i> Back to Savings Management
-                </a>
-                <div>
-                    <a href="<?php echo url('/superadmin/savings/edit/' . $member['id']); ?>" class="btn btn-primary">
-                        <i class="fas fa-edit me-1"></i> Edit Monthly Deduction
-                    </a>
-                    <a href="<?php echo url('/superadmin/view-member/' . $member['id']); ?>" class="btn btn-info">
-                        <i class="fas fa-user me-1"></i> View Member Profile
-                    </a>
                 </div>
             </div>
         </div>
@@ -245,28 +246,18 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize the tabs
-    var tabs = document.querySelectorAll('#transactionTabs button')
-    tabs.forEach(function(tab) {
-        tab.addEventListener('click', function(event) {
-            event.preventDefault();
-            // Activate the selected tab
-            tabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            // Show the corresponding tab content
-            var tabId = this.getAttribute('data-bs-target');
-            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('show', 'active'));
-            document.querySelector(tabId).classList.add('show', 'active');
-        });
-    });
-    
-    // Initialize DataTables if available
+    // Basic DataTable Init
     if (typeof $.fn.DataTable !== 'undefined') {
-        $('table.table').DataTable({
-            order: [[0, 'desc']], // Sort by date by default
+        $('.datatable-lite').DataTable({
+            order: [[0, 'desc']],
             pageLength: 10,
-            lengthMenu: [10, 25, 50, 100],
-            responsive: true
+            searching: true,
+            lengthChange: false,
+            dom: '<"p-3 fb-header"f>t<"p-3 fb-footer"p>',
+            language: {
+                search: "",
+                searchPlaceholder: "Search ledger..."
+            }
         });
     }
 });

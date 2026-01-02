@@ -5,114 +5,113 @@ $current_page = 'manage_admins';
 $page_title = 'Reset Administrator Password';
 ?>
 
-<!-- Page Content -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Reset Password</h1>
-    <a href="<?= url('/superadmin/manage-admins') ?>" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
-            <i class="fas fa-arrow-left fa-sm text-white-50"></i> Back to Administrators
-        </a>
+<div class="container-fluid p-0">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h4 class="fw-bold mb-0">Reset Password</h4>
+            <p class="text-muted small mb-0">Security update for user <strong><?= htmlspecialchars($admin['username']) ?></strong></p>
+        </div>
+        <div class="col-auto">
+            <a href="<?= url('/superadmin/manage-admins') ?>" class="btn btn-outline-secondary d-flex align-items-center gap-2">
+                <i class="fas fa-arrow-left"></i> 
+                <span>Back to List</span>
+            </a>
+        </div>
     </div>
-    
-    <!-- Alerts -->
-    <?php include BASE_DIR . '/app/views/layouts/alerts.php'; ?>
-    
-    <div class="row">
+
+    <div class="row g-4">
         <div class="col-lg-8">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-key fa-fw"></i> Reset Administrator Password</h6>
+            <div class="card border-0 shadow-sm overflow-hidden mb-4">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h6 class="fw-bold mb-0">Security Credentials Update</h6>
                 </div>
-                <div class="card-body">
-                    <div class="mb-4">
-                        <div class="row">
-                            <div class="col-md-4 font-weight-bold">Administrator:</div>
-                            <div class="col-md-8"><?php echo htmlspecialchars($admin['name']); ?></div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-4 font-weight-bold">Username:</div>
-                            <div class="col-md-8"><?php echo htmlspecialchars($admin['username']); ?></div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-4 font-weight-bold">Email:</div>
-                            <div class="col-md-8"><?php echo htmlspecialchars($admin['email']); ?></div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-4 font-weight-bold">Role:</div>
-                            <div class="col-md-8">
-                                <?php if ($admin['role'] === 'superadmin'): ?>
-                                    <span class="badge badge-warning">Superadministrator</span>
-                                <?php else: ?>
-                                    <span class="badge badge-primary">Administrator</span>
-                            <?php endif; ?>
-                            </div>
-                        </div>
-                        </div>
-                        
-                <form action="<?= url('/superadmin/update-password/' . $admin['id']) ?>" method="POST">
-                        <div class="form-group">
-                            <label for="password">New Password *</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="password" name="password" required minlength="8">
-                                <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                    <i class="fas fa-eye"></i>
-                                </button>
+                <div class="card-body p-4">
+                    <!-- Target Account Summary -->
+                    <div class="row g-3 mb-5">
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded-3 border-light border d-flex align-items-center gap-3">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-2">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <div class="text-muted small">Target Administrator</div>
+                                    <div class="fw-bold"><?= htmlspecialchars($admin['name']) ?></div>
                                 </div>
                             </div>
-                            <?php if (isset($_SESSION['errors']['password'])): ?>
-                                <div class="small text-danger"><?php echo $_SESSION['errors']['password']; ?></div>
-                            <?php endif; ?>
-                            <small class="form-text text-muted">Password must be at least 8 characters long and include uppercase, lowercase letters, and numbers.</small>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="password_confirm">Confirm New Password *</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="password_confirm" name="password_confirm" required minlength="8">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
-                                        <i class="fas fa-eye"></i>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded-3 border-light border d-flex align-items-center gap-3">
+                                <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-2">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-muted small">Contact Email</div>
+                                    <div class="fw-bold small"><?= htmlspecialchars($admin['email']) ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="<?= url('/superadmin/update-password/' . $admin['id']) ?>" method="POST">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="password" class="form-label fw-semibold small text-muted text-uppercase">New Secret Password <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control border-light bg-light" id="password" name="password" required minlength="8" placeholder="Enter new password">
+                                    <button class="btn btn-light border-light" type="button" id="togglePassword">
+                                        <i class="fas fa-eye text-muted"></i>
                                     </button>
                                 </div>
+                                <?php if (isset($_SESSION['errors']['password'])): ?>
+                                    <div class="text-danger small mt-1"><?= $_SESSION['errors']['password']; ?></div>
+                                <?php endif; ?>
                             </div>
-                            <?php if (isset($_SESSION['errors']['password_confirm'])): ?>
-                                <div class="small text-danger"><?php echo $_SESSION['errors']['password_confirm']; ?></div>
-                            <?php endif; ?>
+                            
+                            <div class="col-md-6">
+                                <label for="password_confirm" class="form-label fw-semibold small text-muted text-uppercase">Confirm New Password <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control border-light bg-light" id="password_confirm" name="password_confirm" required minlength="8" placeholder="Repeat new password">
+                                    <button class="btn btn-light border-light" type="button" id="toggleConfirmPassword">
+                                        <i class="fas fa-eye text-muted"></i>
+                                    </button>
+                                </div>
+                                <?php if (isset($_SESSION['errors']['password_confirm'])): ?>
+                                    <div class="text-danger small mt-1"><?= $_SESSION['errors']['password_confirm']; ?></div>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="p-4 bg-light bg-opacity-50 rounded-4 border">
+                                    <h6 class="fw-bold mb-3 small text-uppercase text-muted">Policy & Notifications</h6>
+                                    
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="force_reset" name="force_reset" value="1">
+                                        <label class="form-check-label ms-2 h6 mb-0" for="force_reset">Require password change on next login</label>
+                                        <div class="form-text mt-1">Recommended for security. Forces the user to set their own secret key.</div>
+                                    </div>
+                                    
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="unlock_account" name="unlock_account" value="1" <?= (int)$admin['is_locked'] === 1 ? 'checked' : ''; ?>>
+                                        <label class="form-check-label ms-2 h6 mb-0" for="unlock_account">Grant account unlock permission</label>
+                                        <div class="form-text mt-1">Restores access if the account was automatically locked due to login failures.</div>
+                                    </div>
+                                    
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="send_email" name="send_email" value="1" checked>
+                                        <label class="form-check-label ms-2 h6 mb-0" for="send_email">Push email notification alerts</label>
+                                        <div class="form-text mt-1">Sends an automated security alert with the new credentials to the user.</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="force_reset" name="force_reset" value="1">
-                                <label class="custom-control-label" for="force_reset">
-                                    Force password change on next login
-                                </label>
-                                <small class="form-text text-muted">If checked, the administrator will be required to change their password when they next log in.</small>
-                            </div>
-                        </div>
+                        <hr class="my-5 opacity-50">
                         
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="unlock_account" name="unlock_account" value="1" <?php echo (int)$admin['is_locked'] === 1 ? 'checked' : ''; ?>>
-                                <label class="custom-control-label" for="unlock_account">
-                                    Unlock account (if locked)
-                                </label>
-                                <small class="form-text text-muted">This will unlock the account if it has been locked due to failed login attempts.</small>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="send_email" name="send_email" value="1" checked>
-                                <label class="custom-control-label" for="send_email">
-                                    Send email notification with new password
-                            </label>
-                                <small class="form-text text-muted">An email will be sent to the administrator with their new password.</small>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4 d-flex justify-content-between">
-                            <a href="/superadmin/manage-admins" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Reset Password</button>
+                        <div class="d-flex justify-content-end gap-2">
+                             <a href="<?= url('/superadmin/manage-admins') ?>" class="btn btn-light px-4 text-muted">Discard Changes</a>
+                             <button type="submit" class="btn btn-primary px-5 shadow-sm">
+                                 <i class="fas fa-shield-alt me-2"></i> Update Credentials
+                             </button>
                         </div>
                     </form>
                 </div>
@@ -120,35 +119,37 @@ $page_title = 'Reset Administrator Password';
         </div>
         
         <div class="col-lg-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-info-circle fa-fw"></i> Password Guidelines</h6>
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom py-3 fw-bold">Entropic Guard</div>
+                <div class="card-body p-4 text-center">
+                    <p class="text-muted small mb-4">Need a secure key? Generate a high-entropy password instantly.</p>
+                    
+                    <button id="generatePassword" class="btn btn-outline-primary btn-sm w-100 py-2 d-flex align-items-center justify-content-center gap-2">
+                        <i class="fas fa-random fa-sm"></i>
+                        <span>Generate Strong Password</span>
+                    </button>
+                    
+                    <div class="mt-4 text-start">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="small text-muted">Password Integrity</span>
+                            <span id="passwordFeedback" class="small fw-bold text-danger animate-pulse">Enter a key</span>
+                        </div>
+                        <div class="progress" style="height: 6px;">
+                            <div id="passwordStrength" class="progress-bar bg-danger transition-all" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="small">A strong password should:</p>
-                    <ul class="small">
-                        <li>Be at least 8 characters long</li>
-                        <li>Include at least one uppercase letter</li>
-                        <li>Include at least one lowercase letter</li>
-                        <li>Include at least one number</li>
-                        <li>Include at least one special character</li>
-                        <li>Not be based on easily guessable information</li>
+            </div>
+
+            <div class="card border-0 shadow-sm bg-info bg-opacity-10">
+                <div class="card-body p-4 small">
+                    <h6 class="fw-bold mb-3 d-flex align-items-center gap-2"><i class="fas fa-lightbulb text-info"></i> Security Standards</h6>
+                    <ul class="ps-3 text-muted mb-0 d-grid gap-2">
+                        <li>Minimum <strong>8 characters</strong> length</li>
+                        <li>Mix of <strong>UPPER</strong> and <strong>lower</strong> case</li>
+                        <li>Include at least <strong>one digit</strong> (0-9)</li>
+                        <li>Include <strong>symbols</strong> (!@#$%^&*)</li>
                     </ul>
-                    
-                    <div class="mt-3">
-                        <button id="generatePassword" class="btn btn-sm btn-success btn-block">
-                            <i class="fas fa-random mr-1"></i> Generate Strong Password
-                        </button>
-                    </div>
-                    
-                    <div class="card bg-light mt-3">
-                        <div class="card-body py-2">
-                            <div class="small font-weight-bold">Password strength:</div>
-                            <div class="progress mt-1 mb-1">
-                                <div id="passwordStrength" class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div id="passwordFeedback" class="small text-muted">Enter a password</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -157,112 +158,84 @@ $page_title = 'Reset Administrator Password';
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Toggle password visibility
     const togglePassword = document.getElementById('togglePassword');
     const password = document.getElementById('password');
-    
-    togglePassword.addEventListener('click', function() {
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
-    });
-    
-    // Toggle confirm password visibility
     const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
     const passwordConfirm = document.getElementById('password_confirm');
-    
-    toggleConfirmPassword.addEventListener('click', function() {
-        const type = passwordConfirm.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordConfirm.setAttribute('type', type);
-        toggleConfirmPassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
-    });
-    
-    // Generate random password
     const generatePasswordBtn = document.getElementById('generatePassword');
     
-    generatePasswordBtn.addEventListener('click', function() {
-        const generatedPassword = generatePassword(12);
-        password.value = generatedPassword;
-        passwordConfirm.value = generatedPassword;
-        
-        // Update strength meter
-        updatePasswordStrength(generatedPassword);
-    });
-    
-    // Password strength meter
-    password.addEventListener('input', function() {
-        updatePasswordStrength(this.value);
-    });
-    
+    if (togglePassword && password) {
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye text-muted"></i>' : '<i class="fas fa-eye-slash text-muted"></i>';
+        });
+    }
+
+    if (toggleConfirmPassword && passwordConfirm) {
+        toggleConfirmPassword.addEventListener('click', function() {
+            const type = passwordConfirm.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordConfirm.setAttribute('type', type);
+            toggleConfirmPassword.innerHTML = type === 'password' ? '<i class="fas fa-eye text-muted"></i>' : '<i class="fas fa-eye-slash text-muted"></i>';
+        });
+    }
+
+    if (generatePasswordBtn) {
+        generatePasswordBtn.addEventListener('click', () => {
+            const pwd = generatePassword(14);
+            password.value = pwd;
+            passwordConfirm.value = pwd;
+            password.type = 'text';
+            passwordConfirm.type = 'text';
+            updatePasswordStrength(pwd);
+        });
+    }
+
+    password.addEventListener('input', (e) => updatePasswordStrength(e.target.value));
+
     function updatePasswordStrength(pwd) {
         const strength = calculatePasswordStrength(pwd);
-        const strengthBar = document.getElementById('passwordStrength');
+        const bar = document.getElementById('passwordStrength');
         const feedback = document.getElementById('passwordFeedback');
         
-        // Update progress bar
-        strengthBar.style.width = strength + '%';
-        strengthBar.setAttribute('aria-valuenow', strength);
+        bar.style.width = strength + '%';
+        bar.setAttribute('aria-valuenow', strength);
         
-        // Update color and feedback
         if (strength < 25) {
-            strengthBar.className = 'progress-bar bg-danger';
-            feedback.textContent = 'Very weak';
+            bar.className = 'progress-bar bg-danger';
+            feedback.textContent = 'Critically Weak';
+            feedback.className = 'small fw-bold text-danger';
         } else if (strength < 50) {
-            strengthBar.className = 'progress-bar bg-warning';
+            bar.className = 'progress-bar bg-warning';
             feedback.textContent = 'Weak';
+            feedback.className = 'small fw-bold text-warning';
         } else if (strength < 75) {
-            strengthBar.className = 'progress-bar bg-info';
-            feedback.textContent = 'Moderate';
+            bar.className = 'progress-bar bg-info';
+            feedback.textContent = 'Compelling';
+            feedback.className = 'small fw-bold text-info';
         } else {
-            strengthBar.className = 'progress-bar bg-success';
-            feedback.textContent = 'Strong';
+            bar.className = 'progress-bar bg-success';
+            feedback.textContent = 'Unbreakable';
+            feedback.className = 'small fw-bold text-success';
         }
     }
-    
-    function calculatePasswordStrength(password) {
-        if (!password) return 0;
-        
-        let strength = 0;
-        
-        // Length contribution (up to 25 points)
-        strength += Math.min(25, Math.floor(password.length * 2.5));
-        
-        // Complexity contribution
-        if (/[a-z]/.test(password)) strength += 10;  // lowercase
-        if (/[A-Z]/.test(password)) strength += 10;  // uppercase
-        if (/[0-9]/.test(password)) strength += 10;  // numbers
-        if (/[^a-zA-Z0-9]/.test(password)) strength += 15;  // special chars
-        
-        // Variety contribution
-        const uniqueChars = new Set(password.split('')).size;
-        strength += Math.min(20, uniqueChars * 2);
-        
-        // Return capped at 100
-        return Math.min(100, strength);
+
+    function calculatePasswordStrength(p) {
+        if (!p) return 0;
+        let s = 0;
+        s += Math.min(25, p.length * 2);
+        if (/[a-z]/.test(p)) s += 15;
+        if (/[A-Z]/.test(p)) s += 15;
+        if (/[0-9]/.test(p)) s += 15;
+        if (/[^a-zA-Z0-9]/.test(p)) s += 30;
+        return Math.min(100, s);
     }
-    
-    function generatePassword(length = 12) {
-        const lowercase = 'abcdefghijklmnopqrstuvwxyz';
-        const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const numbers = '0123456789';
-        const special = '!@#$%^&*()-_=+';
-        const allChars = lowercase + uppercase + numbers + special;
-        
-        let password = '';
-        
-        // Ensure we have at least one of each type
-        password += lowercase.charAt(Math.floor(Math.random() * lowercase.length));
-        password += uppercase.charAt(Math.floor(Math.random() * uppercase.length));
-        password += numbers.charAt(Math.floor(Math.random() * numbers.length));
-        password += special.charAt(Math.floor(Math.random() * special.length));
-        
-        // Fill the rest randomly
-        for (let i = 4; i < length; i++) {
-            password += allChars.charAt(Math.floor(Math.random() * allChars.length));
-        }
-        
-        // Shuffle the password
-        return password.split('').sort(() => 0.5 - Math.random()).join('');
+
+    function generatePassword(l) {
+        const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
+        let retVal = "";
+        for (let i = 0; i < l; ++i) retVal += charset.charAt(Math.floor(Math.random() * charset.length));
+        return retVal;
     }
 });
 </script>

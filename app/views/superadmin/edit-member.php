@@ -1,173 +1,190 @@
 <?php /* Don't include admin_header.php here as it's already included by renderSuperAdmin method */ ?>
 
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Edit Member</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="<?php echo url('/superadmin/dashboard'); ?>">Superadmin Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="<?php echo url('/superadmin/members'); ?>">Members Management</a></li>
-        <li class="breadcrumb-item active">Edit Member</li>
-    </ol>
-    
+<div class="container-fluid p-0">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h4 class="fw-bold mb-0">Modify Member Metadata</h4>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mt-2 mb-0" style="background: transparent; padding: 0;">
+                    <li class="breadcrumb-item small"><a href="<?= url('/superadmin/dashboard') ?>" class="text-decoration-none text-muted">Dashboard</a></li>
+                    <li class="breadcrumb-item small"><a href="<?= url('/superadmin/members') ?>" class="text-decoration-none text-muted">Members Management</a></li>
+                    <li class="breadcrumb-item active small" aria-current="page">Edit Configuration</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-auto">
+            <a href="<?= url('/superadmin/view-member/' . ($member['id'] ?? '')) ?>" class="btn btn-outline-primary d-flex align-items-center gap-2">
+                <i class="fas fa-id-card"></i> 
+                <span>View Profile</span>
+            </a>
+        </div>
+    </div>
+
     <?php include VIEWS_PATH . '/layouts/alerts.php'; ?>
-    
+
     <?php if (isset($member) && !empty($member)): ?>
-    <div class="row">
-        <div class="col-xl-8">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-user-edit me-1"></i>
-                    Edit Member Information
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm overflow-hidden">
+                <div class="card-header bg-white border-bottom py-3 d-flex align-items-center gap-2">
+                    <i class="fas fa-edit text-primary"></i>
+                    <h6 class="fw-bold mb-0">Primary Identity & Records</h6>
                 </div>
-                <div class="card-body">
-                    <form action="<?php echo url('/superadmin/edit-member/' . $member['id']); ?>" method="POST" id="editMemberForm">
-                        <div class="row mb-3">
+                <div class="card-body p-4">
+                    <form action="<?= url('/superadmin/edit-member/' . $member['id']) ?>" method="POST" class="needs-validation" novalidate id="editMemberForm">
+                        <div class="row g-4">
                             <div class="col-md-6">
-                                <label for="coop_no" class="form-label">Cooperative Number</label>
-                                <input type="text" id="coop_no" name="coop_no" class="form-control" value="<?php echo htmlspecialchars($member['coop_no'] ?? ''); ?>" required>
+                                <label for="coop_no" class="form-label fw-semibold small text-muted text-uppercase">COOPS Registry ID <span class="text-danger">*</span></label>
+                                <input type="text" id="coop_no" name="coop_no" class="form-control border-light bg-light" value="<?= htmlspecialchars($member['coop_no'] ?? '') ?>" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="ti_number" class="form-label">TI Number</label>
-                                <input type="text" id="ti_number" name="ti_number" class="form-control" value="<?php echo htmlspecialchars($member['ti_number'] ?? ''); ?>">
-                                <div class="form-text">Treasury Integrated Number issued by FCET Bichi</div>
+                                <label for="ti_number" class="form-label fw-semibold small text-muted text-uppercase">TI Number Reference</label>
+                                <input type="text" id="ti_number" name="ti_number" class="form-control border-light bg-light" value="<?= htmlspecialchars($member['ti_number'] ?? '') ?>">
+                                <div class="form-text small opacity-75">Treasury Integrated ID (FCET Bichi)</div>
                             </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" id="name" name="name" class="form-control" value="<?php echo htmlspecialchars($member['name'] ?? ''); ?>" required>
+                            
+                            <div class="col-md-12">
+                                <label for="name" class="form-label fw-semibold small text-muted text-uppercase">Legal Full Name <span class="text-danger">*</span></label>
+                                <input type="text" id="name" name="name" class="form-control border-light bg-light" value="<?= htmlspecialchars($member['name'] ?? '') ?>" required>
                             </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($member['email']); ?>" required>
+                            
+                            <div class="col-md-6 mt-4">
+                                <label for="email" class="form-label fw-semibold small text-muted text-uppercase">Primary Email Address <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text border-light bg-light text-muted"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control border-light bg-light" id="email" name="email" value="<?= htmlspecialchars($member['email']) ?>" required>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone" name="phone" value="<?php echo htmlspecialchars($member['phone'] ?? ''); ?>">
+                            <div class="col-md-6 mt-4">
+                                <label for="phone" class="form-label fw-semibold small text-muted text-uppercase">Contact Line</label>
+                                <div class="input-group">
+                                    <span class="input-group-text border-light bg-light text-muted"><i class="fas fa-phone"></i></span>
+                                    <input type="text" class="form-control border-light bg-light" id="phone" name="phone" value="<?= htmlspecialchars($member['phone'] ?? '') ?>">
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="department" class="form-label">Department</label>
-                                <select class="form-select" id="department" name="department">
+                            
+                            <div class="col-md-8 mt-4">
+                                <label for="department" class="form-label fw-semibold small text-muted text-uppercase">Departmental Attachment</label>
+                                <select class="form-select border-light bg-light" id="department" name="department">
                                     <option value="">Select Department</option>
                                     <?php if (isset($departments) && !empty($departments)): ?>
                                         <?php foreach ($departments as $dept): ?>
-                                            <option value="<?php echo $dept['id']; ?>" <?php echo ($member['department_id'] == $dept['id']) ? 'selected' : ''; ?>>
-                                                <?php echo htmlspecialchars($dept['name']); ?>
+                                            <option value="<?= $dept['id'] ?>" <?= ($member['department_id'] == $dept['id']) ? 'selected' : '' ?>>
+                                                <?= htmlspecialchars($dept['name']) ?>
                                             </option>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 </select>
                             </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label d-block">Status</label>
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input" type="radio" name="is_active" id="statusActive" value="1" <?php echo $member['is_active'] ? 'checked' : ''; ?>>
-                                    <label class="form-check-label" for="statusActive">Active</label>
+
+                            <div class="col-md-4 mt-4 d-flex align-items-end">
+                                <div class="p-3 bg-light border rounded-3 w-100">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="radio" name="is_active" id="statusActive" value="1" <?= $member['is_active'] ? 'checked' : '' ?>>
+                                            <label class="form-check-label small fw-bold text-success" for="statusActive">ACTIVE</label>
+                                        </div>
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="radio" name="is_active" id="statusInactive" value="0" <?= !$member['is_active'] ? 'checked' : '' ?>>
+                                            <label class="form-check-label small fw-bold text-danger" for="statusInactive">INACTIVE</label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="is_active" id="statusInactive" value="0" <?php echo !$member['is_active'] ? 'checked' : ''; ?>>
-                                    <label class="form-check-label" for="statusInactive">Inactive</label>
-                                </div>
+                            </div>
+                            
+                            <div class="col-12 mt-4">
+                                <label for="address" class="form-label fw-semibold small text-muted text-uppercase">Known Residential Address</label>
+                                <textarea class="form-control border-light bg-light" id="address" name="address" rows="3"><?= htmlspecialchars($member['address'] ?? '') ?></textarea>
                             </div>
                         </div>
                         
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Address</label>
-                            <textarea class="form-control" id="address" name="address" rows="3"><?php echo htmlspecialchars($member['address'] ?? ''); ?></textarea>
-                        </div>
-                        
-                        <hr>
-                        
-                        <div class="d-flex justify-content-between">
-                            <a href="<?php echo url('/superadmin/view-member/' . $member['id']); ?>" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Update Member</button>
+                        <div class="mt-5 pt-3 border-top d-flex justify-content-between">
+                            <a href="<?= url('/superadmin/members') ?>" class="btn btn-light px-4">Discard Changes</a>
+                            <button type="submit" class="btn btn-primary px-4 fw-bold shadow-sm">
+                                <i class="fas fa-save me-2"></i> Update Record
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
         
-        <div class="col-xl-4">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-info-circle me-1"></i>
-                    Member Information
-                </div>
-                <div class="card-body">
-                    <div class="text-center mb-4">
-                        <div class="rounded-circle bg-secondary bg-opacity-25 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
-                            <i class="fas fa-user fa-3x text-secondary"></i>
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 text-center">
+                    <div class="position-relative d-inline-block mb-4">
+                        <div class="rounded-circle bg-primary bg-opacity-10 shadow-sm d-flex align-items-center justify-content-center border border-4 border-light" style="width: 100px; height: 100px;">
+                            <span class="h1 mb-0 fw-bold text-primary"><?= strtoupper(substr($member['name'], 0, 1)) ?></span>
                         </div>
-                        <h4><?php echo htmlspecialchars($member['name']); ?></h4>
-                        <p class="text-muted mb-0">COOPS No: <?php echo htmlspecialchars($member['coop_no']); ?></p>
-                        <p class="badge <?php echo $member['is_active'] ? 'bg-success' : 'bg-danger'; ?>">
-                            <?php echo $member['is_active'] ? 'Active' : 'Inactive'; ?>
-                        </p>
+                        <span class="position-absolute bottom-0 end-0 p-2 rounded-circle border border-4 border-white shadow-sm <?= $member['is_active'] ? 'bg-success' : 'bg-danger' ?>" style="width: 24px; height: 24px;"></span>
                     </div>
                     
-                    <hr>
+                    <h5 class="fw-bold mb-1"><?= htmlspecialchars($member['name']) ?></h5>
+                    <p class="text-muted small mb-3">System Identity Profile</p>
                     
-                    <p><strong>Joined Date:</strong> <?php echo date('F j, Y', strtotime($member['created_at'])); ?></p>
-                    
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-1"></i> Editing this member will update their information across all systems.
+                    <div class="bg-light rounded-3 p-3 mb-4 text-start">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="small text-muted">Registry No:</span>
+                            <span class="small fw-bold text-primary"><?= htmlspecialchars($member['coop_no']) ?></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="small text-muted">Joined On:</span>
+                            <span class="small fw-bold"><?= date('M d, Y', strtotime($member['created_at'])) ?></span>
+                        </div>
                     </div>
-                    
-                    <div class="alert alert-warning">
-                        <i class="fas fa-exclamation-triangle me-1"></i> Changing a member's status to inactive will prevent them from accessing the system.
+
+                    <div class="d-grid gap-2">
+                        <div class="alert alert-info border-0 small mb-0 d-flex gap-3 align-items-center">
+                            <i class="fas fa-info-circle fa-lg text-primary opacity-50"></i>
+                            <div class="text-start">Updates synchronized across all system modules immediately.</div>
+                        </div>
+                        <?php if($member['is_active']): ?>
+                            <div class="alert alert-warning border-0 small mb-0 d-flex gap-3 align-items-center">
+                                <i class="fas fa-exclamation-triangle fa-lg text-warning opacity-50"></i>
+                                <div class="text-start">Deactivating results in immediate portal access revocation.</div>
+                            </div>
+                        <?php endif; ?>
                     </div>
+                </div>
+            </div>
+
+            <!-- Historical Context (Optional Visual) -->
+            <div class="card border-0 shadow-sm bg-primary bg-opacity-10">
+                <div class="card-body p-4">
+                    <h6 class="fw-bold mb-3 small text-primary text-uppercase">Record Consistency</h6>
+                    <p class="text-muted small mb-0">
+                        Maintaining accurate member metadata ensures integrity in financial disbursements and organizational reporting. 
+                        Verify <strong>TI Numbers</strong> for payroll alignment.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
     <?php else: ?>
-    <div class="alert alert-danger">
-        <i class="fas fa-exclamation-triangle me-1"></i> Member not found or has been deleted.
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-5 text-center">
+            <div class="bg-danger bg-opacity-10 text-danger rounded-circle p-4 d-inline-block mb-4">
+                <i class="fas fa-exclamation-triangle fa-3x"></i>
+            </div>
+            <h4 class="fw-bold">Member Record Missing</h4>
+            <p class="text-muted mb-4 small">The requested member file could not be retrieved from the central registry.</p>
+            <a href="<?= url('/superadmin/members') ?>" class="btn btn-primary shadow-sm">Return to Directory</a>
+        </div>
     </div>
     <?php endif; ?>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Form validation
     const form = document.getElementById('editMemberForm');
-    
-    form.addEventListener('submit', function(e) {
-        let isValid = true;
-        const coopNo = document.getElementById('coop_no').value.trim();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        
-        // Simple validation
-        if (coopNo === '') {
-            isValid = false;
-            alert('Please enter COOPS No.');
-        } else if (name === '') {
-            isValid = false;
-            alert('Please enter Full Name.');
-        } else if (email === '') {
-            isValid = false;
-            alert('Please enter Email Address.');
-        } else if (!validateEmail(email)) {
-            isValid = false;
-            alert('Please enter a valid Email Address.');
-        }
-        
-        if (!isValid) {
-            e.preventDefault();
-        }
-    });
-    
-    // Email validation helper
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
+    if(form) {
+        form.addEventListener('submit', function(e) {
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
     }
 });
 </script> 

@@ -40,7 +40,7 @@ final class Database
             } catch (PDOException $e) {
                 // Log error and rethrow
                 error_log('Database connection failed: ' . $e->getMessage());
-                throw $e;
+                die("Core Database Connection Failed: " . $e->getMessage());
             }
         }
         

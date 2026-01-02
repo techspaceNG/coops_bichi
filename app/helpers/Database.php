@@ -33,7 +33,7 @@ class Database
             } catch (PDOException $e) {
                 // Log error and display user-friendly message
                 error_log("Database Connection Error: " . $e->getMessage());
-                die("Failed to connect to the database. Please try again later.");
+                die("Failed to connect: " . $e->getMessage());
             }
         }
         

@@ -25,7 +25,8 @@ class Database
         if (self::$connection === null) {
             $config = self::getConfig();
             
-            $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
+            $port = $config['port'] ?? 3306;
+            $dsn = "mysql:host={$config['host']};port={$port};dbname={$config['dbname']};charset={$config['charset']}";
             
             try {
                 self::$connection = new PDO($dsn, $config['username'], $config['password'], $config['options']);
@@ -51,6 +52,7 @@ class Database
         
         return [
             'host'     => Environment::get('DB_HOST', 'localhost'),
+            'port'     => Environment::get('DB_PORT', 3306),
             'dbname'   => Environment::get('DB_NAME', 'coops_bichi'),
             'username' => Environment::get('DB_USER', 'root'),
             'password' => Environment::get('DB_PASS', ''),

@@ -14,21 +14,18 @@ flush();
 echo "Step 1: Script Started.<br>";
 flush();
 
-$host = getenv('DB_HOST');
-$db = getenv('DB_NAME');
-$user = getenv('DB_USER');
-$pass = getenv('DB_PASS');
+$port = getenv('DB_PORT') ?: 3306;
 
 if (!$host) {
     echo "ERROR: DB_HOST not set.<br>";
     exit;
 }
-echo "Target Host: " . $host . " (Port: 3306/default)<br>";
+echo "Target Host: " . $host . " (Port: $port)<br>";
 flush();
 
 // Timeout
 set_time_limit(15);
-$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
+$dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
 
 // TEST 1: SSL WITH NO VERIFICATION
 echo "Step 2: Attempting SSL Connection (No Verify)...<br>";

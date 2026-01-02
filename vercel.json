@@ -5,7 +5,7 @@
     "api/index.php": {
       "runtime": "vercel-php@0.7.1"
     },
-    "public/test_env.php": {
+    "api/test_env.php": {
       "runtime": "vercel-php@0.7.1"
     }
   },
@@ -16,7 +16,7 @@
     },
     {
       "src": "/test_env.php",
-      "dest": "/public/test_env.php"
+      "dest": "/api/test_env.php"
     },
     {
       "src": "/(.*)",

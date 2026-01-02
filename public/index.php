@@ -37,11 +37,16 @@ spl_autoload_register(function($className) {
     
     // If direct path doesn't exist, try case-insensitive alternatives
     if (!file_exists($file)) {
-        // Handle Controllers -> controllers mismatch (common on Linux)
-        if (strpos($className, 'Controllers/') === 0) {
-            $lowerFile = BASE_DIR . '/app/controllers/' . substr($className, 12) . '.php';
-            if (file_exists($lowerFile)) {
-                $file = $lowerFile;
+        // Generic fallback: Try converting the main directories (Controllers, Core, Models, etc.) to lowercase
+        // This handles Namespace\Class -> namespace/Class mapping common in this project structure
+        $pathParts = explode('/', $className);
+        if (count($pathParts) > 0) {
+            // Lowercase the directory part (first part of the class path relative to app/)
+            $pathParts[0] = strtolower($pathParts[0]);
+            $lowerDirFile = BASE_DIR . '/app/' . implode('/', $pathParts) . '.php';
+            
+            if (file_exists($lowerDirFile)) {
+                $file = $lowerDirFile;
             }
         }
         // For Config/Database.php, try alternative cases

@@ -37,6 +37,13 @@ spl_autoload_register(function($className) {
     
     // If direct path doesn't exist, try case-insensitive alternatives
     if (!file_exists($file)) {
+        // Handle Controllers -> controllers mismatch (common on Linux)
+        if (strpos($className, 'Controllers/') === 0) {
+            $lowerFile = BASE_DIR . '/app/controllers/' . substr($className, 12) . '.php';
+            if (file_exists($lowerFile)) {
+                $file = $lowerFile;
+            }
+        }
         // For Config/Database.php, try alternative cases
         if (stripos($className, 'config/database') !== false) {
             $alternatives = [
@@ -72,7 +79,7 @@ require_once BASE_DIR . '/app/config/routes.php';
 $requestUrl = $_SERVER['REQUEST_URI'];
 
 // Debug info - remove in production
-if ($_SERVER['QUERY_STRING'] === 'debug') {
+if (($_SERVER['QUERY_STRING'] ?? '') === 'debug') {
     echo '<pre>';
     echo 'REQUEST_URI: ' . $_SERVER['REQUEST_URI'] . "\n";
     echo 'SCRIPT_NAME: ' . $_SERVER['SCRIPT_NAME'] . "\n";
@@ -147,7 +154,7 @@ if ($requestUrl === '/') {
 }
 
 // Debug point - remove in production
-if ($_SERVER['QUERY_STRING'] === 'debug') {
+if (($_SERVER['QUERY_STRING'] ?? '') === 'debug') {
     echo '<pre>';
     echo 'Processed URL: ' . $requestUrl . "\n";
     echo 'Base URL: ' . $baseUrl . "\n";

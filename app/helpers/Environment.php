@@ -73,7 +73,23 @@ final class Environment
             self::load();
         }
         
-        return self::$variables[$key] ?? $default;
+        // Check loaded .env variables
+        if (isset(self::$variables[$key])) {
+            return self::$variables[$key];
+        }
+
+        // Check system environment variables (for Vercel/Cloud)
+        $value = getenv($key);
+        if ($value !== false) {
+            return $value;
+        }
+
+        // Check $_ENV superglobal
+        if (isset($_ENV[$key])) {
+            return $_ENV[$key];
+        }
+        
+        return $default;
     }
     
     /**

@@ -47,6 +47,20 @@ spl_autoload_register(function($className) {
             
             if (file_exists($lowerDirFile)) {
                 $file = $lowerDirFile;
+            } else {
+                // Second fallback: lowercase EVERYTHING (e.g. app/controllers/superadmin/dashboardcontroller.php)
+                // or just the directories (e.g. app/controllers/superadmin/DashboardController.php)
+                
+                // Try lowercasing all directory parts but keeping filename as is
+                $mixedParts = $pathParts;
+                for ($i = 0; $i < count($mixedParts) - 1; $i++) {
+                    $mixedParts[$i] = strtolower($mixedParts[$i]);
+                }
+                $mixedFile = BASE_DIR . '/app/' . implode('/', $mixedParts) . '.php';
+                
+                if (file_exists($mixedFile)) {
+                    $file = $mixedFile;
+                }
             }
         }
         // For Config/Database.php, try alternative cases

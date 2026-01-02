@@ -74,20 +74,20 @@ final class Environment
             self::load();
         }
         
-        // Check loaded .env variables
-        if (isset(self::$variables[$key])) {
-            return self::$variables[$key];
-        }
-
-        // Check system environment variables (for Vercel/Cloud)
+        // Check system environment variables (for Vercel/Cloud) - PRIORITY 1
         $value = getenv($key);
         if ($value !== false) {
             return $value;
         }
 
-        // Check $_ENV superglobal
+        // Check $_ENV superglobal - PRIORITY 2
         if (isset($_ENV[$key])) {
             return $_ENV[$key];
+        }
+
+        // Check loaded .env variables - PRIORITY 3 (Fallback)
+        if (isset(self::$variables[$key])) {
+            return self::$variables[$key];
         }
         
         return $default;
